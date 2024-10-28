@@ -1,0 +1,305 @@
+@use '../utils' as *;
+
+  /*
+ ::::::::::::::::::::::::::
+  CTA AREA CSS
+ ::::::::::::::::::::::::::
+ */
+
+// === cta style 1 ===
+
+.cta1 {
+  background-color: var(--vtc-bg-main-1);
+  padding: 80px 0px;
+  position: relative;
+
+  .cta1-shape1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .cta1-shape2 {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+
+  .cta1-shape3 {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  .buttons {
+    text-align: end;
+
+    @media #{$md} {
+      text-align: start;
+      padding-top: 24px;
+    }
+
+    @media #{$xs} {
+      text-align: start;
+      padding-top: 24px;
+    }
+  }
+}
+
+// === cta style 1 ===
+
+// === cta style 2 ===
+
+.cta2 {
+  padding: 75px 0px;
+  overflow: hidden;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: var(--vtc-bg-main-3);
+    z-index: -2;
+  }
+
+  .buttons {
+    text-align: end;
+
+    @media #{$md} {
+      text-align: start;
+      margin-top: 10px;
+    }
+
+    @media #{$xs} {
+      text-align: start;
+      margin-top: 10px;
+    }
+  }
+
+  .cta1-shape1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scale(1.1);
+    z-index: -1;
+
+    @media #{$md} {
+      display: none;
+    }
+
+    @media #{$xs} {
+      display: none;
+    }
+  }
+
+  .cta1-shape2 {
+    position: absolute;
+    top: 120px;
+    left: 47%;
+    z-index: -1;
+
+    @media #{$md} {
+      display: none;
+    }
+
+    @media #{$xs} {
+      display: none;
+    }
+    
+  }
+
+  .cta1-shape3 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
+  }
+
+}
+
+// === cta style 2 ===
+
+// === cta style 3 ===
+
+.cta3 {
+  padding: 100px 0px;
+
+  .form-area {
+    margin-top: 50px;
+    position: relative;
+
+    form {
+      input {
+        background-color: #8e65ff1a;
+        border: none;
+        padding: 16px;
+        border-radius: 30px;
+        width: 270px;
+        margin-right: 100px;
+
+        &:focus {
+          outline: none;
+        }
+
+        &::placeholder {
+          color: var(--02-home-text-colors, #04000E);
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+        }
+      }
+    }
+
+    .button {
+      position: absolute;
+      right: 70px;
+      top: 0;
+    }
+  }
+
+  .shape1 {
+    position: absolute;
+    top: 50px;
+    left: 0;
+
+    @media #{$md} {
+      display: none;
+    }
+
+    @media #{$xs} {
+      display: none;
+    }
+  }
+
+  .shape2 {
+    position: absolute;
+    top: 50px;
+    right: 0;
+
+    @media #{$md} {
+      display: none;
+    }
+
+    @media #{$xs} {
+      display: none;
+    }
+  }
+}
+
+// === cta style 3 ===
+
+// === cta style 4 ===
+
+.cta4 {
+  padding: 80px 0;
+  background-color: #0E0401;
+  position: relative;
+
+  .form-area {
+    margin-top: 50px;
+    position: relative;
+
+    form {
+      input {
+        background-color: #ffffff23;
+        border: none;
+        padding: 16px;
+        border-radius: 7px;
+        width: 270px;
+        margin-right: 160px;
+        color: #fff;
+
+        &:focus {
+          outline: none;
+        }
+
+        &::placeholder {
+          color: var(--02-home-text-colors, #ffffff9a);
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+        }
+      }
+    }
+
+    .button {
+      position: absolute;
+      right: 90px;
+      top: 0;
+    }
+  }
+
+
+  .shape1 {
+    position: absolute;
+    left: 240px;
+    top: 80px;
+
+    @media #{$md} {
+      display: none;
+    }
+
+    @media #{$xs} {
+      display: none;
+    }
+
+  }
+
+  .shape2 {
+    position: absolute;
+    left: 190px;
+    bottom: 40px;
+
+    @media #{$md} {
+      display: none;
+    }
+
+    @media #{$xs} {
+      display: none;
+    }
+  }
+
+  .shape3 {
+    position: absolute;
+    right: 140px;
+    bottom: 100px;
+
+    @media #{$md} {
+      display: none;
+    }
+
+    @media #{$xs} {
+      display: none;
+    }
+  }
+
+  .shape4 {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    @media #{$md} {
+      display: none;
+    }
+
+    @media #{$xs} {
+      display: none;
+    }
+    
+  }
+  
+}
+
+// === cta style 4 ===
+
+   /*
+ ::::::::::::::::::::::::::
+  CTA AREA CSS
+ ::::::::::::::::::::::::::
+ */

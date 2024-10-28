@@ -1,0 +1,236 @@
+@use '../utils' as *;
+
+  /*
+ ::::::::::::::::::::::::::
+  FAQ AREA CSS
+ ::::::::::::::::::::::::::
+ */
+//====  faq style 1 ===
+
+.faq {
+
+  .faq-image {
+    margin-right: 30px;
+    img {
+      width: 100%;
+      
+      @media #{$md} {
+        height: 300px;
+        object-fit: cover;
+      }
+
+      @media #{$xs} {
+        height: 300px;
+        object-fit: cover;
+      }
+
+    }
+
+    @media #{$md} {
+      margin-right: 0;
+    }
+
+    @media #{$xs} {
+      margin-right: 0;
+    }
+  }
+  .accordion{
+    .accordion-item {
+      border: none;
+      border-radius: 0;
+      border-bottom: 2px solid #E5E8E8;
+      padding: 6px 0px;
+      button {
+        border: none;
+        background: none;
+        box-shadow: none;
+        color: var(--03-home-text-colors, #001518);
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 24px; /* 100% */
+        padding: 17px 0px;
+
+        @media #{$xs} {
+          font-size: 18px;
+          line-height: 22px;
+          padding-right: 40px;
+        }
+        border: 0;
+
+        &:focus {
+          box-shadow: none;
+        }
+      }
+
+      .accordion-body {
+        color: var(--03-home-paragrapjh, #565858);
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px; /* 133.333% */
+        padding: 5px 0px 10px 0px;
+      }
+
+      &:nth-child(1) {
+        border-top: 2px solid #E5E8E8;
+      }
+    }
+
+    .accordion-button::after {
+      display: none;
+    }
+
+    .accordion-button::before {
+      float: right !important;
+      font-family: FontAwesome;
+      content:"\2212";
+      padding-right: 5px;
+      position: absolute;
+      right: 0;
+  }
+  .accordion-button.collapsed::before {
+      float: right !important;
+      content:"\2b";
+  }
+
+  }
+}
+
+//====  faq style 1 ===
+
+//====  faq page style ===
+
+.faq-page-sec {
+  .images-all {
+    position: relative;
+    height: 700px;
+    margin-left: 40px;
+
+    @media #{$md} {
+      padding-left: 0;
+      padding-top: 40px;
+    }
+
+    @media #{$xs} {
+      padding-left: 0;
+      padding-top: 40px;
+    }
+
+    .image1 {
+      position: absolute;
+      left: 0;
+      top: 50px;
+    }
+
+    .image2 {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
+    .image3 {
+      position: absolute;
+      bottom: 30px;
+      right: 0;
+    }
+  }
+}
+
+.faq-logo-area {
+
+  .heading1 {
+    span.span {
+      background-color: #2293a736;
+    }
+  }
+  .logo-area {
+    ul {
+      li {
+        display: inline-block;
+        border: 1px solid #D2DEE0;
+        width: 220px;
+        padding: 24px;
+        border-radius: 7px;
+        margin: 10px;
+        transition: all .4s;
+
+        &:hover {
+          transition: all .4s;
+          border-radius: 7px;
+          background: #FFF;
+          box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.08);
+        }
+
+        &.active {
+          transition: all .4s;
+          border-radius: 7px;
+          background: #FFF;
+          box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.08);
+        }
+      }
+    }
+  }
+}
+
+//====  faq page style ===
+
+//====  faq page style 2 ===
+
+.faq-bottom-area {
+  .accordion {
+    border: none;
+    .accordion-item {
+      margin-top: 20px;
+      border: none;
+      border-radius: 7px;
+      background-color: #E9F4F6;
+
+      .accordion-button {
+        border: none;
+        background: none;
+        color: var(--03-home-p-age-text-colors, #042327);
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 18px; /* 100% */
+        padding: 20px;
+        box-shadow: none;
+        &:focus {
+          outline: none;
+          box-shadow: none;
+        }
+      }
+
+      .accordion-body {
+        color: var(--White-Colors, #ffffffcb);
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px; /* 133.333% */
+        text-align: start;
+        padding: 0px 20px 20px 20px;
+      }
+
+      &.active {
+        background: #2293A7;
+
+        .accordion-button {
+          color: #fff;
+
+          &::after {
+            filter: brightness(0) invert(1);
+          }
+        }
+      }
+    }
+  }
+}
+
+//====  faq page style 2 ===
+
+   /*
+ ::::::::::::::::::::::::::
+  FAQ AREA CSS
+ ::::::::::::::::::::::::::
+ */

@@ -29,6 +29,14 @@ class ConstFieldForm extends Form
             'label' => 'admin.const_field.company_name',
             'rules' => [],
         ],
+        'company_description' => [
+            'name' => 'company_description',
+            'type' => 'textarea',
+            'label' => 'admin.const_field.company_description',
+            'rules' => [],
+            'row' => 5,
+            'class' => 'ckeditorStandard',
+        ],
         'company_address' => [
             'name' => 'company_address',
             'type' => 'text',

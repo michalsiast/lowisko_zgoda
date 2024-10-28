@@ -1,0 +1,83 @@
+@use '../utils' as *;
+
+  /*
+ ::::::::::::::::::::::::::
+  WORK AREA CSS
+ ::::::::::::::::::::::::::
+ */
+
+// === work style 3 ===
+
+.work3 {
+  position: relative;
+
+  .work3-box {
+    text-align: center;
+    margin-top: 40px;
+    padding: 0px 14px;
+    .icon {
+      height: 70px;
+      width: 70px;
+      text-align: center;
+      line-height: 70px;
+      background-color: #F4F0FF;
+      border-radius: 50%;
+      margin: auto;
+      transition: all .4s;
+    }
+
+    .bol {
+      background-color: #F4F0FF;
+      height: 24px;
+      width: 24px;
+      border-radius: 50%;
+      display: inline-block;
+      margin: 20px 0px;
+      transition: all .4s;
+      position: relative;
+      z-index: 99;
+    }
+
+    &:hover {
+      .icon {
+        background-color: #8D65FF;
+        transition: all .4s;
+      }
+      .bol {
+        background-color: #8D65FF;
+        transition: all .4s;
+      }
+    }
+  }
+
+  .bol-line {
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 155px;
+      top: 140px;
+      height: 1px;
+      width: 75%;
+      background-color: #F4F0FF;
+
+      @media #{$md} {
+        display: none;
+      }
+
+      @media #{$xs} {
+        display: none;
+      }
+
+    }
+  }
+}
+
+// === work style 3 ===
+
+   /*
+ ::::::::::::::::::::::::::
+  WORK AREA CSS
+ ::::::::::::::::::::::::::
+ */

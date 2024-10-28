@@ -151,6 +151,7 @@ return [
     'const_field.contact_details' => 'Kontakt',
     'const_field.page_title' => 'Tytuł',
     'const_field.company_name' => 'Nazwa',
+    'const_field.company_description' => 'Opis',
     'const_field.company_post_code' => 'Kod pocztowy',
     'const_field.company_address' => 'Adres',
     'const_field.company_city' => 'Miasto',

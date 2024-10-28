@@ -1,0 +1,288 @@
+@use '../utils' as *;
+
+  /*
+ ::::::::::::::::::::::::::
+  CHOOSE AREA CSS
+ ::::::::::::::::::::::::::
+ */
+
+// === choose sytle 1 ====
+
+.choose3 {
+  .choose-boxs {
+    .signle {
+      h3 {
+        color: var(--02-home-text-colors, #04000E);
+        font-size: 44px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 44px; /* 100% */
+      }
+
+      P {
+        color: var(--02-home-text-colors, #04000E);
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 20px; /* 100% */
+        padding-top: 16px;
+      }
+
+      border-bottom: 1px solid var(--vtc-bg-main-4);
+      padding: 18px 0px;
+    }
+  }
+
+  .image {
+
+    @media #{$md} {
+      margin-top: 30px;
+    }
+
+    @media #{$xs} {
+      margin-top: 30px;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .shape1 {
+    position: absolute;
+    left: -100px;
+    top: 0;
+  }
+
+  .shape2 {
+    position: absolute;
+    left: -60px;
+    bottom: 0;
+  }
+
+  .top-shape {
+    @media #{$md} {
+      height: 16px;
+    }
+
+    @media #{$xs} {
+      height: 16px;
+    }
+    img {
+      @media #{$md} {
+        display: none;
+      }
+      @media #{$xs} {
+        display: none;
+      }
+    }
+  }
+}
+
+// === choose sytle 1 ====
+
+// === choose sytle 4 ====
+
+.choose4 {
+  position: relative;
+  background: #F9F9F9;
+
+  .main-image {
+    display: none;
+
+    @media #{$md} {
+      display: block;
+    }
+    @media #{$xs} {
+      display: block;
+    }
+
+    img {
+      height: 400px;
+      object-fit: cover;
+      width: 100%;
+      margin-bottom: 40px;
+    }
+  }
+
+  .heading4 {
+    padding-left: 40px;
+    position: relative;
+    @media #{$md} {
+      padding-left: 0;
+    }
+
+    @media #{$xs} {
+      padding-left: 0;
+    }
+
+    .list {
+      li {
+        color: var(--04-home-text-colors, #0E0401);
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 20px; /* 100% */
+        padding-top: 36px;
+        display: flex;
+        align-items: center;
+
+        span.check {
+          display: inline-block;
+          height: 20px;
+          width: 20px;
+          text-align: center;
+          line-height: 20px;
+          font-size: 12px;
+          background-color: var(--vtc-bg-main-5);
+          color: #fff;
+          border-radius: 50%;
+          margin-right: 24px;
+          position: relative;
+
+          &::after {
+            content: "";
+            position: absolute;
+            left: -10px;
+            top: -10px;
+            height: 40px;
+            width: 40px;
+            background-color: #fd491218;
+            border-radius: 50%;
+          }
+        }
+      }
+    }
+
+    .buttons {
+      display: flex;
+      align-items: center;
+
+      @media #{$xs} {
+        display: block;
+      }
+
+      .contact-btn {
+        display: flex;
+        align-items: center;
+        margin-left: 30px;
+
+        @media #{$xs} {
+          margin-left: 0;
+        }
+
+        .icon {
+          height: 50px;
+          width: 50px;
+          line-height: 50px;
+          text-align: center;
+          background-color: #fd49121a;
+          border-radius: 50%;
+          margin-right: 12px;
+        }
+
+        .text {
+          p {
+            color: var(--04-home-text-colors, #0E0401);
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 18px; /* 100% */
+            letter-spacing: 0.1px;
+          }
+
+          a {
+            color: var(--04-home-text-colors, #0E0401);
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 18px; /* 100% */
+            display: inline-block;
+            padding-top: 10px;
+            letter-spacing: 0.1px;
+          }
+        }
+        
+      }
+
+    }
+
+    .shape3 {
+      position: absolute;
+      right: 0;
+      top: 50%;
+    }
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    background-image: url(../img/others/choose4-image.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @media #{$md} {
+      display: none;
+    }
+    @media #{$xs} {
+      display: none;
+    }
+  }
+
+  .counter-box {
+    background: #fff;
+    height: 122px;
+    width: 180px;
+    position: absolute;
+    right: 0;
+    z-index: 2;
+    bottom: 100px;
+    padding: 24px 32px;
+    border-radius: 7px 0px 0px 7px;
+
+    h4 {
+      color: var(--04-home-text-colors, #0E0401);
+      font-size: 44px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 44px; /* 100% */
+
+      span {
+        color: var(--vtc-bg-main-5);
+      }
+    }
+
+    p {
+      color: var(--04-home-text-colors, #0E0401);
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 18px; /* 100% */
+      padding-top: 8px;
+    }
+  }
+
+  .shape1 {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .shape2 {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+// === choose sytle 4 ====
+
+/*
+ ::::::::::::::::::::::::::
+  CHOOSE AREA CSS
+ ::::::::::::::::::::::::::
+ */

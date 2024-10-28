@@ -1,0 +1,60 @@
+$colors: (
+    'text': (
+        'heading-1': #001518,
+        'pera-1': #565858,
+        'pera-2': #CCCCCE,
+        'white-1': #ffffff,
+    ),
+    'bg': (
+        'main-1': #2293A7,
+        'main-2': #F69434,
+        'main-3': #1C74F0,
+        'main-4': #8D65FF,
+        'main-5': #FD4A12,
+        'common-1': #E9F4F6,
+        'common-2': #D9ECF0,
+        'common-3': #001518,
+        'common-4': #F6F8FA,
+        'common-5': #EDF4FE,
+        'common-6': #F9F8FE,
+        'common-7': #F4F1FE,
+        'white': #ffffff,
+    ),
+    'border': (
+        'color-1': #4b2c2c,
+    )
+);
+
+
+// home 2 transparent bg
+//*****
+// border-radius: 4px;
+// background: rgba(255, 255, 255, 0.05);
+// backdrop-filter: blur(47px);
+
+
+// home 3 text color
+//*****
+// h1 {
+//     background: var(--Home-Page-1-Color-Gradient, linear-gradient(90deg, #EE64FE 0%, #7000FD 100%));
+//     background-clip: text;
+//     -webkit-background-clip: text;
+//     -webkit-text-fill-color: transparent;
+//   }
+
+
+
+// home text color
+//*****
+// h1 {
+//     background: linear-gradient(275deg, #09FF9F 20.2%, #C0FF3B 49.23%);
+// background-clip: text;
+// -webkit-background-clip: text;
+// -webkit-text-fill-color: transparent;
+// font-family: "Plus Jakarta Sans";
+// font-size: 62px;
+// font-style: normal;
+// font-weight: 800;
+// line-height: 82px;
+// text-transform: uppercase;
+//   }
