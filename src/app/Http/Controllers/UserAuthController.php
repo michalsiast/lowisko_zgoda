@@ -57,7 +57,8 @@ class UserAuthController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
+            // Zwraca błędy walidacji jako odpowiedź JSON dla AJAX
+            return response()->json(['errors' => $validator->errors()], 422);
         }
 
         // Tworzenie nowego użytkownika z domyślnym statusem nieaktywnym
@@ -69,8 +70,10 @@ class UserAuthController extends Controller
             'is_blocked' => false,
         ]);
 
-        return redirect()->route('login')->with('status', 'Konto zostało utworzone. Proszę poczekać na aktywację przez administratora.');
+        // Zwraca odpowiedź JSON, która wskazuje na sukces rejestracji
+        return response()->json(['success' => 'Konto zostało utworzone. Proszę poczekać na aktywację przez administratora.']);
     }
+
 
 
     public function logout()
