@@ -20,13 +20,16 @@ class UserAuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::guard('web')->attempt($credentials)) {
-            return redirect('/'); // Przekierowanie na stronę główną po zalogowaniu
+            // Zwracamy odpowiedź JSON przy poprawnym logowaniu
+            return response()->json(['success' => true]);
         }
 
-        return back()->withErrors([
-            'email' => 'Błędne dane logowania.',
-        ]);
+        // Przy błędzie logowania zwracamy odpowiedź JSON z kodem 422
+        return response()->json([
+            'errors' => ['login' => ['Nieprawidłowy email lub hasło.']]
+        ], 422, ['Content-Type' => 'application/json']);
     }
+
 
     public function showRegistrationForm()
     {
