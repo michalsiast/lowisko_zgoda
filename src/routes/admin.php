@@ -13,7 +13,7 @@ Route::prefix('admin')->group(function () {
 });
 
 
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin', 'auth']], function () {
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'admin']], function () {
 
     Route::post('/setstatus', 'Controller@SetStatus')->name('setstatus');
 
