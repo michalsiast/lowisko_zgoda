@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use App\Models\User;
+use Illuminate\Http\Request;
+use App\Models\Photo;
 
 class UserController extends Controller
 {
@@ -70,4 +72,22 @@ class UserController extends Controller
         $user->save();
         return redirect()->route('admin.users.index')->with('status', 'Użytkownik został aktywowany.');
     }
+    public function uploadPhotos(Request $request)
+    {
+        $request->validate([
+            'photos' => 'required|array|max:10', // Maksymalnie 10 plików
+            'photos.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Każdy plik max 2MB
+        ]);
+
+        foreach ($request->file('photos') as $photo) {
+            $filename = time() . '_' . $photo->getClientOriginalName();
+            $photo->storeAs('public/photos', $filename);
+
+            // Zapisz nazwę pliku w bazie danych
+            Photo::create(['filename' => $filename]);
+        }
+
+        return redirect()->back()->with('status', 'Zdjęcia zostały przesłane pomyślnie.');
+    }
+
 }
