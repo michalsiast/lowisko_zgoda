@@ -132,6 +132,7 @@ return [
 
     'realization.singular' => 'Realizacja',
     'realization.plural' => 'Realizacje',
+    'users.plural' => 'Użytkownicy',
     'realization.title' => 'Tytuł',
     'realization.lead' => 'Wprowadzenie',
     'realization.text' => 'Tekst',

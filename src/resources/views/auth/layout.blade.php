@@ -76,7 +76,7 @@
 
 
     <script src="{{asset('_admin/js/vendors/jquery-3.5.1.slim.min.js')}}"></script>
-    <script src="{{asset('_admin/js/vendors/ckeditor.js')}}"></script>
+    <script src="{{asset('_admin/js/ckeditor.js')}}"></script>
     <script src="{{asset('_admin/js/vendors/Chart.min.js')}}"></script>
     <script src="{{asset('_admin/js/vendors/bootstrap.js')}}"></script>
     <script src="{{asset('_admin/js/vendors/feather.min.js')}}"></script>

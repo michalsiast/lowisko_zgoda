@@ -28,6 +28,23 @@ body {
   }
 }
 
+.ck-content .image-style-align-left {
+    float: left;
+    margin-right: 1em;
+    margin-bottom: 1em;
+}
+
+.ck-content .image-style-align-right {
+    float: right;
+    margin-left: 1em;
+    margin-bottom: 1em;
+}
+
+.ck-content p {
+    margin-top: 0;
+    margin-bottom: 1em;
+}
+
 .sidebar-sticky {
   position: relative;
   top: 0;

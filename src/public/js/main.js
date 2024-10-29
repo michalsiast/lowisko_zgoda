@@ -33,12 +33,12 @@
         $n.val(amount-1);
       }
     });
-    
+
         // pricing-plan-tab
         $("#ce-toggle").click(function (event) {
           $(".plan-toggle-wrap").toggleClass("active");
         });
-    
+
         $("#ce-toggle").change(function () {
           if ($(this).is(":checked")) {
             $(".tab-content #yearly").hide();
@@ -345,7 +345,7 @@
                 jQuery("html, body").animate({ scrollTop: 0 }, duration);
                 return false;
               });
-              
+
 
 
 
@@ -372,7 +372,7 @@
 			translateXValue = 0,
 			delayValue 		= 0.5,
 		   animatedTextElements = document.querySelectorAll('.text-anime-style-1');
-		
+
 		animatedTextElements.forEach((element) => {
 			let animationSplitText = new SplitText(element, { type: "chars, words" });
 				gsap.from(animationSplitText.words, {
@@ -383,16 +383,16 @@
 				stagger: staggerAmount,
 				scrollTrigger: { trigger: element, start: "top 85%" },
 				});
-		});		
+		});
 	}
-	
-	if ($('.text-anime-style-2').length) {				
+
+	if ($('.text-anime-style-2').length) {
 		let	 staggerAmount 		= 0.05,
 			 translateXValue	= 20,
 			 delayValue 		= 0.5,
 			 easeType 			= "power2.out",
 			 animatedTextElements = document.querySelectorAll('.text-anime-style-2');
-		
+
 		animatedTextElements.forEach((element) => {
 			let animationSplitText = new SplitText(element, { type: "chars, words" });
 				gsap.from(animationSplitText.chars, {
@@ -404,12 +404,12 @@
 					ease: easeType,
 					scrollTrigger: { trigger: element, start: "top 85%"},
 				});
-		});		
+		});
 	}
-	
-	if ($('.text-anime-style-3').length) {		
+
+	if ($('.text-anime-style-3').length) {
 		let	animatedTextElements = document.querySelectorAll('.text-anime-style-3');
-		
+
 		 animatedTextElements.forEach((element) => {
 			//Reset if needed
 			if (element.animation) {
@@ -438,7 +438,7 @@
 				ease: Back.easeOut,
 				stagger: 0.02,
 			});
-		});		
+		});
 	}
 
   $('.hero3-slider-all').owlCarousel({
@@ -479,7 +479,7 @@
     dropRadius: 20,
     perturbance: 0.04,
   });
-    
+
 
             $('select').niceSelect();
 
@@ -508,7 +508,7 @@
                   }
                 });
               }
-            
+
               // Show animated elements
               animateElements();
               $(window).scroll(animateElements);
@@ -545,3 +545,16 @@
             });
 
 })(jQuery);
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Znajdź wszystkie obrazy wewnątrz kontenera .ck-content
+    document.querySelectorAll('.ck-content figure.image').forEach(image => {
+        // Znajdź trzeci element po obrazie
+        let thirdElement = image.nextElementSibling?.nextElementSibling;
+
+        if (thirdElement) {
+            // Dodaj klasę clear-both do trzeciego elementu
+            thirdElement.classList.add('clear-both');
+        }
+    });
+});

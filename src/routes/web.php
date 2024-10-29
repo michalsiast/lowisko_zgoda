@@ -38,3 +38,5 @@ require_once('web_offer.php');
 require_once('web_offer_category.php');
 require_once('web_realization.php');
 require_once('web_realization_category.php');
+
+Route::post('/ckeditor/upload', [App\Http\Controllers\CKEditorController::class, 'upload'])->name('ckeditor.upload');

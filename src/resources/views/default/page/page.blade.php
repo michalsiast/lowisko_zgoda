@@ -1,16 +1,19 @@
 @extends('default.layout')
 @section('content')
 
-
-    <h1>Default page module</h1>
-    {{$page}}
-
-
-    <h4>field test</h4>
-    <div>{!! $fields->text1 ?? '- none -' !!}</div>
-
-    @foreach($gallery->items as $galleryItem)
-        <img src="{{renderImage($galleryItem->url, 400, 200, 'resize')}}" alt="{{$galleryItem->name ?? ''}}">
-    @endforeach
-
+    @include('default.subheader', ['pageName' => $page])
+    <div class="about-page-sec sp list_style_custom">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12">
+                    <div class="heading2">
+                        {!! $fields->text1 !!}
+                    </div>
+                </div>
+            </div>
+            @foreach($gallery->items as $galleryItem)
+                <img src="{{renderImage($galleryItem->url, 400, 200, 'resize')}}" alt="{{$galleryItem->name ?? ''}}">
+            @endforeach
+        </div>
+    </div>
 @endsection

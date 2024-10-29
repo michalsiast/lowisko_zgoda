@@ -112,4 +112,44 @@ a:focus {
   width: 1.25rem;
   border-radius: 50%;
 }
+
+.ck-content .image-style-align-left {
+    float: left;
+    margin-right: 1em;
+    margin-bottom: 1em;
+}
+
+.ck-content .image-style-align-right {
+    float: right;
+    margin-left: 1em;
+    margin-bottom: 1em;
+}
+
+.ck-content p {
+    margin-top: 0;
+    margin-bottom: 1em;
+}
+.ck-content::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.clear-both {
+    clear: both;
+}
+
+.ck-content figure.table {
+    display: flex;
+    width: auto;
+}
+
+.ck-content figure.table table{
+    flex-grow: 1;
+}
+
+.list_style_custom ul{
+    list-style: disc;
+    padding-left: 35px;
+}
 /*# sourceMappingURL=main.css.map */

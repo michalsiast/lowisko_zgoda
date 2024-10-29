@@ -7,6 +7,7 @@ $(() => {
         ClassicEditor
             .create( e, {
                 language: 'pl',
+                extraPlugins: [MyCustomUploadAdapterPlugin],
             } )
             .catch( error => {
                 console.error( error );
@@ -121,3 +122,46 @@ $('.status-switch').change(function(){
         toastr.success('Pomyślnie zmieniono status.')
     });
 });
+
+class MyUploadAdapter {
+    constructor(loader) {
+        this.loader = loader;
+    }
+
+    upload() {
+        return this.loader.file
+            .then(file => new Promise((resolve, reject) => {
+                const data = new FormData();
+                data.append('upload', file);
+                data.append('_token', document.querySelector('meta[name="csrf-token"]').getAttribute('content')); // CSRF token
+
+                fetch('/ckeditor/upload', {
+                    method: 'POST',
+                    body: data,
+                })
+                    .then(response => response.json())
+                    .then(result => {
+                        if (result.error) {
+                            reject(result.error.message);
+                        } else {
+                            resolve({
+                                default: result.url // Zwracamy URL przesłanego pliku
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        reject('Błąd przesyłania pliku: ' + error.message);
+                    });
+            }));
+    }
+
+    abort() {
+        // Obsługa przerwania przesyłania (opcjonalna)
+    }
+}
+
+function MyCustomUploadAdapterPlugin(editor) {
+    editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+        return new MyUploadAdapter(loader);
+    };
+}

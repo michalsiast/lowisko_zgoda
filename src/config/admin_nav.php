@@ -95,6 +95,11 @@ return [
                     ],
                 ]
             ],
+            'users' => [
+                'label' => 'admin.users.plural',
+                'icon' => 'file',
+                'route_name' => 'admin.users.index',
+            ],
         ]
     ],
     [
