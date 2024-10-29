@@ -12,8 +12,18 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::prefix('user')->name('user.')->group(function () {
+    // Logowanie użytkowników
+    Route::get('login', [App\Http\Controllers\UserAuthController::class, 'showLoginForm'])->name('login');
+    Route::post('login', [App\Http\Controllers\UserAuthController::class, 'login']);
 
+    // Rejestracja użytkowników
+    Route::get('register', [App\Http\Controllers\UserAuthController::class, 'showRegistrationForm'])->name('register');
+    Route::post('register', [App\Http\Controllers\UserAuthController::class, 'register']);
 
+    // Wylogowanie użytkowników
+    Route::post('logout', [App\Http\Controllers\UserAuthController::class, 'logout'])->name('logout');
+});
 
 require_once('admin.php');
 

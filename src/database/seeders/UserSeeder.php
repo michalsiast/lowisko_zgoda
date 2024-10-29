@@ -17,19 +17,22 @@ class UserSeeder extends Seeder
             'name' => 'admin',
             'email' => 'tjcymerys@gmail.com',
             'password' => \Illuminate\Support\Facades\Hash::make('admin'),
-            'lang' => 'pl'
+            'lang' => 'pl',
+            'role' => 'admin',
         ]);
         \App\User::create([
             'name' => 'M. Kardaś',
             'email' => 'rescodev98@gmail.com',
             'password' => \Illuminate\Support\Facades\Hash::make('admin'),
-            'lang' => 'pl'
+            'lang' => 'pl',
+            'role' => 'admin',
         ]);
         \App\User::create([
             'name' => 'Administrator',
             'email' => 'admin@palmax.com.pl',
             'password' => \Illuminate\Support\Facades\Hash::make('admin'),
-            'lang' => 'pl'
+            'lang' => 'pl',
+            'role' => 'admin',
         ]);
     }
 }

@@ -121,7 +121,16 @@
                         <img src="{{asset('images/icons/blog2-icon2.png')}}" alt="">
                     </div>
                     <div class="heading">
-                        <a href="#">Logowanie/Rejestracja</a>
+                        @auth
+                            <!-- Wyświetl nazwę zalogowanego użytkownika i przycisk "Wyloguj się" -->
+                            <span>Witaj, {{ Auth::user()->name }}!</span>
+                            <form method="POST" action="{{ route('user.logout') }}" style="display: inline;">
+                                @csrf
+                                <button type="submit" class="btn btn-link">Wyloguj się</button>
+                            </form>
+                        @else
+                            <a href="{{ route('user.login') }}">Logowanie</a>/<a href="{{ route('user.register') }}">Rejestracja</a>
+                        @endauth
                     </div>
                 </div>
 
@@ -213,7 +222,16 @@
             </div>
             <div class="contact-box">
                 <div class="pera">
-                    <a href="#">Logowanie/Rejestracja</a>
+                    @auth
+                        <!-- Wyświetl nazwę zalogowanego użytkownika i przycisk "Wyloguj się" -->
+                        <span>Witaj, {{ Auth::user()->name }}!</span>
+                        <form method="POST" action="{{ route('user.logout') }}" style="display: inline;">
+                            @csrf
+                            <button type="submit" class="btn btn-link">Wyloguj się</button>
+                        </form>
+                    @else
+                        <a href="{{ route('user.login') }}">Logowanie</a>/<a href="{{ route('user.register') }}">Rejestracja</a>
+                    @endauth
                 </div>
             </div>
 
@@ -266,7 +284,16 @@
                 <div class="footer-list list">
                     <h5>Przydatne linki</h5>
                     <ul>
-                        <li><a href="#">Logowanie/Rejestracja</a></li>
+                        <li>@auth
+                                <!-- Wyświetl nazwę zalogowanego użytkownika i przycisk "Wyloguj się" -->
+                                <span>Witaj, {{ Auth::user()->name }}!</span>
+                                <form method="POST" action="{{ route('user.logout') }}" style="display: inline;">
+                                    @csrf
+                                    <button type="submit" class="btn btn-link">Wyloguj się</button>
+                                </form>
+                            @else
+                                <a href="{{ route('user.login') }}">Logowanie</a>/<a href="{{ route('user.register') }}">Rejestracja</a>
+                            @endauth</li>
                         <li><a href="#">Regulamin</a></li>
                         <li><a href="#">Rezerwacja</a></li>
                         <li><a href="#">Cennik</a></li>

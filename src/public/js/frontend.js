@@ -103,3 +103,50 @@ function submitForm(form, url = 'contact-form') {
 }
 
 AOS.init();
+document.getElementById('password_confirmation').addEventListener('input', function() {
+    const password = document.getElementById('password').value;
+    const confirmPassword = this.value;
+
+    if (password !== confirmPassword) {
+        this.setCustomValidity("Hasła muszą być takie same.");
+    } else {
+        this.setCustomValidity('');
+    }
+});
+$(document).ready(function() {
+    $('#registrationForm').on('submit', function(e) {
+        e.preventDefault(); // Zatrzymuje standardowe wysyłanie formularza
+
+        $('#nameError').text('');
+        $('#emailError').text('');
+        $('#passwordError').text('');
+        $('#successMessage').text('');
+
+        $.ajax({
+            url: $(this).attr('action'),
+            method: 'POST',
+            data: $(this).serialize(),
+            success: function(response) {
+                $('#successMessage').text('Rejestracja zakończona sukcesem');
+                $('#registrationForm')[0].reset();
+            },
+            error: function(xhr) {
+                // Obsługa błędów walidacji
+                if (xhr.status === 422) { // Kod 422: Unprocessable Entity (błędy walidacji)
+                    var errors = xhr.responseJSON.errors;
+                    if (errors.name) {
+                        $('#nameError').text(errors.name[0]);
+                    }
+                    if (errors.email) {
+                        $('#emailError').text(errors.email[0]);
+                    }
+                    if (errors.password) {
+                        $('#passwordError').text(errors.password[0]);
+                    }
+                } else {
+                    $('#successMessage').text('Wystąpił nieoczekiwany błąd. Spróbuj ponownie.');
+                }
+            }
+        });
+    });
+});
