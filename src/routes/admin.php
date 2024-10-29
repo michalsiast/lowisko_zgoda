@@ -137,7 +137,11 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.', 'mi
         Route::get('/{navName}/{id}/delete', 'NavItemController@delete')->name('delete');
     });
 
-
+    Route::get('/users', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('users.index');
+    Route::post('/users/{id}/delete', [App\Http\Controllers\Admin\UserController::class, 'destroy'])->name('users.destroy');
+    Route::post('/users/{id}/block', [App\Http\Controllers\Admin\UserController::class, 'block'])->name('users.block');
+    Route::post('/users/{id}/unblock', [App\Http\Controllers\Admin\UserController::class, 'unblock'])->name('users.unblock');
+    Route::post('/users/{id}/activate', [App\Http\Controllers\Admin\UserController::class, 'activate'])->name('users.activate');
 });
 
 

@@ -14,22 +14,34 @@ class UserAuthController extends Controller
     {
         return view('auth.user_login'); // Stwórz widok logowania dla użytkowników
     }
-
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
 
         if (Auth::guard('web')->attempt($credentials)) {
-            // Zwracamy odpowiedź JSON przy poprawnym logowaniu
+            $user = Auth::user();
+
+            if (!$user->is_active) {
+                Auth::logout();
+                return response()->json([
+                    'errors' => ['login' => ['Konto nie jest jeszcze aktywne.']]
+                ], 422);
+            }
+
+            if ($user->is_blocked) {
+                Auth::logout();
+                return response()->json([
+                    'errors' => ['login' => ['Konto zostało zablokowane.']]
+                ], 422);
+            }
+
             return response()->json(['success' => true]);
         }
 
-        // Przy błędzie logowania zwracamy odpowiedź JSON z kodem 422
         return response()->json([
             'errors' => ['login' => ['Nieprawidłowy email lub hasło.']]
-        ], 422, ['Content-Type' => 'application/json']);
+        ], 422);
     }
-
 
     public function showRegistrationForm()
     {
@@ -45,21 +57,21 @@ class UserAuthController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 422);
+            return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        // Tworzenie nowego użytkownika
-        $user = User::create([
+        // Tworzenie nowego użytkownika z domyślnym statusem nieaktywnym
+        User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'is_active' => false,
+            'is_blocked' => false,
         ]);
 
-        // Automatyczne logowanie po rejestracji
-        Auth::guard('web')->login($user);
-
-        return response()->json(['message' => 'Rejestracja zakończona sukcesem!'], 200);
+        return redirect()->route('login')->with('status', 'Konto zostało utworzone. Proszę poczekać na aktywację przez administratora.');
     }
+
 
     public function logout()
     {
