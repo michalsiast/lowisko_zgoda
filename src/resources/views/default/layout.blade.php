@@ -146,7 +146,7 @@
                     <div class="header-elements">
                         <div class="site-logo">
                             <a href="/">
-                                <img src="{{asset('images/logo.png')}}" alt="">
+                                <img style="max-width: 200px;" src="{{asset('images/logo.png')}}" alt="">
                             </a>
                         </div>
 
@@ -175,7 +175,7 @@
         <div class="col-12">
             <div class="mobile-header-elements">
                 <div class="mobile-logo">
-                    <a href="/"><img src="{{asset('images/logo.png')}}" alt=""></a>
+                    <a href="/"><img style="max-width: 200px;" src="{{asset('images/logo.png')}}" alt=""></a>
                 </div>
                 <div class="mobile-nav-icon">
                     <i class="fa-duotone fa-bars-staggered"></i>
@@ -187,7 +187,7 @@
 
 <div class="mobile-sidebar d-block d-lg-none">
     <div class="logo-m">
-        <a href="/"><img src="{{asset('images/logo.png')}}" alt=""></a>
+        <a href="/"><img  style="max-width: 200px;" src="{{asset('images/logo.png')}}" alt=""></a>
     </div>
     <div class="menu-close">
         <i class="fa-solid fa-xmark"></i>
@@ -257,7 +257,7 @@
         <div class="row">
             <div class="col-lg-4">
                 <div class="footer-logo-area">
-                    <a href="/"><img src="{{asset('images/logo.png')}}" alt=""></a>
+                    <a href="/"><img style="max-width: 200px;"  src="{{asset('images/logo.png')}}" alt=""></a>
                     <div class="heading1">
                         {!! getConstField('company_description') !!}
                     </div>
