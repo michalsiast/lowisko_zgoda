@@ -44,22 +44,16 @@ return [
                 'icon' => 'sliders',
                 'route_name' => 'admin.rotator.index',
             ],
+
             'article' => [
                 'label' => 'admin.article.plural',
                 'icon' => 'book',
-                'route_name' => '',
-                'items' => [
-                    'article' => [
-                        'label' => 'admin.article.plural',
-                        'icon' => 'arrow-up-left',
-                        'route_name' => 'admin.article.index',
-                    ],
-                    'article_category' => [
-                        'label' => 'admin.article_category.plural',
-                        'icon' => 'arrow-up-left',
-                        'route_name' => 'admin.article_category.index',
-                    ],
-                ]
+                'route_name' => 'admin.article.index',
+            ],
+            'article_category' => [
+                'label' => 'admin.article_category.plural',
+                'icon' => 'book',
+                'route_name' => 'admin.article_category.index',
             ],
             'offer' => [
                 'label' => 'admin.offer.plural',

@@ -31,7 +31,7 @@
 
 
                             {!! $form->renderFieldGroup('title') !!}
-                            {!! $form->renderFieldGroup('lead') !!}
+{{--                            {!! $form->renderFieldGroup('lead') !!}--}}
                             {!! $form->renderFieldGroup('text') !!}
 
                             <hr>

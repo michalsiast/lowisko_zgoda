@@ -74,7 +74,7 @@ return [
 
 
     'article_category.singular' => 'Kategoria artykułu',
-    'article_category.plural' => 'Kategoria artykułów',
+    'article_category.plural' => 'Dlaczego my',
     'article_category.title' => 'Tytuł',
     'article_category.lead' => 'Wprowadzenie',
     'article_category.text' => 'Tekst',

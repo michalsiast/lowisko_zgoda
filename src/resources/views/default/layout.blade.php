@@ -158,7 +158,7 @@
 
 
                         <div class="header2-buttons">
-                            <a class="theme-btn4" href="{{getConstField('google_map')}}">Jak do nas dojechać <span class="arrow"><i class="fa-solid fa-arrow-right"></i></span></a>
+                            <a class="theme-btn4" style="display: flex" href="{{getConstField('google_map')}}">Jak do nas dojechać <span class="arrow"><i class="fa-solid fa-arrow-right"></i></span></a>
                         </div>
 
                     </div>
@@ -240,7 +240,7 @@
         <div class="contact-infos">
             <h3>Media społecznościowe</h3>
             <ul class="social-icon">
-                <li><a href="{{getConstField('facebook')}}"><i class="fa-brands fa-facebook-f"></i></a></li>
+                <li><a target="_blank" href="{{getConstField('facebook')}}"><i class="fa-brands fa-facebook-f"></i></a></li>
             </ul>
         </div>
 
@@ -263,7 +263,7 @@
                     </div>
                     <div class="social-icons">
                         <ul>
-                            <li><a href="{{getConstField('facebook')}}"><i class="fa-brands fa-facebook-f"></i></a></li>
+                            <li><a target="_blank" href="{{getConstField('facebook')}}"><i class="fa-brands fa-facebook-f"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -294,10 +294,10 @@
                             @else
                                 <a href="{{ route('user.login') }}">Logowanie</a>/<a href="{{ route('user.register') }}">Rejestracja</a>
                             @endauth</li>
-                        <li><a href="#">Regulamin</a></li>
-                        <li><a href="#">Rezerwacja</a></li>
+                        <li><a href="/regulamin">Regulamin</a></li>
+                        <li><a href="https://rezerwacja.lowiskozgoda.pl/">Rezerwacja</a></li>
                         <li><a href="#">Cennik</a></li>
-                        <li><a href="#">Kontakt</a></li>
+                        <li><a href="{{route('contact.show')}}">Kontakt</a></li>
                     </ul>
                 </div>
             </div>

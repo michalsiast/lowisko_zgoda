@@ -23,7 +23,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 sp-right30">
-                    <article>
+                    <article class="custom-blog_style">
                         <div class="details-info-box">
                             <div class="image">
                                 <img src="{{ renderImage($item->galleryCover(), 1800, 400, 'cover') }}" alt="">
@@ -33,6 +33,19 @@
                                 <h3>{{$item->title}}</h3>
                                 <div class="space16"></div>
                                 {!! $item->text !!}
+                            </div>
+                        </div>
+                        <div class="gallery" style="padding-top: 40px">
+                            <div class="row">
+                                @foreach($item->gallery->items as $item)
+                                    @if($item->type !== 'cover')
+                                        <div class="col-lg-4">
+                                            <a href="{{ renderImage($item->url, 1920, 1080, 'resize') }}">
+                                                <img style="width: 100%" src="{{ renderImage($item->url, 600, 600, 'fit') }}" alt="">
+                                            </a>
+                                        </div>
+                                    @endif
+                                @endforeach
                             </div>
                         </div>
                     </article>
@@ -45,4 +58,9 @@
             </div>
         </div>
     </div>
+    @push('scripts.body.bottom')
+        <script>
+            var lightbox = $('.gallery a').simpleLightbox({});
+        </script>
+    @endpush
 @endsection

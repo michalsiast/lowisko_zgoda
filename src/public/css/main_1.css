@@ -3980,44 +3980,7 @@ body.body {
   transition: all 0.4s;
   animation-timing-function: ease-in;
 }
-.service2 .service2-box:hover {
-  transform: translateY(-10px);
-  transition: all 0.4s;
-}
-.service2 .service2-box:hover h4 a {
-  color: var(--vtc-text-white-1);
-  transition: all 0.4s;
-}
-.service2 .service2-box:hover .icon {
-  background-color: #fff;
-  transition: all 0.4s;
-}
-.service2 .service2-box:hover p {
-  color: rgba(255, 255, 255, 0.7882352941);
-  transition: all 0.4s;
-}
-.service2 .service2-box:hover::before {
-  height: 100%;
-  transition: all 0.4s;
-  opacity: 1;
-}
-.service2 .service2-box:hover .button {
-  transform: translateY(-5px);
-  transition: all 0.4s;
-  color: var(--vtc-bg-white);
-}
-.service2 .service2-box:hover .button::before {
-  width: 100%;
-  transition: all 0.4s;
-  right: auto;
-  left: 0;
-  animation-timing-function: ease-in;
-}
-.service2 .service2-box:hover .button span.arrow {
-  background-color: rgba(255, 255, 255, 0.1176470588);
-  color: #fff;
-  transition: all 0.4s;
-}
+
 .service2 .shape1 {
   position: absolute;
   left: 0;
@@ -5017,6 +4980,11 @@ body.body {
   top: 50%;
   margin-top: -40px;
   margin-left: -70px;
+}
+
+.custom-blog_style ul{
+    list-style: disc;
+    padding-left: 35px;
 }
 
 .service-details .accordion {

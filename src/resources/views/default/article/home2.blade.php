@@ -2,7 +2,7 @@
     <div class="sidebar-box mb40">
         <h3>Inne aktualności</h3>
         <div class="space10"></div>
-        @foreach($items as $item)
+        @foreach($items->take(5) as $item)
             <div class="recent-box">
                 <div class="">
                     <div class="image">
@@ -10,7 +10,7 @@
                     </div>
                 </div>
                 <div class="heading">
-                    <h5><a href="{{route('article.show.'.$item->id)}}">{{$item->title}}</a></h5>
+                    <h5><a href="{{ route('article.show.' . $item->id) }}">{{ $item->title }}</a></h5>
                     {!! $item->lead !!}
                 </div>
             </div>

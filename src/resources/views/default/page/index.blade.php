@@ -94,8 +94,7 @@
 
 
             <div class="space30"></div>
-
-
+            @include('default.article.category.home')
         </div>
         <img class="shape1" src="{{ asset('images/shapes/service2-shape1.png') }}" alt="">
         <img class="shape2" src="{{ asset('images/shapes/service2-shape2.png') }}" alt="">
