@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Session;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Photo;
+use Illuminate\Support\Facades\Mail;
 use App\Mail\AccountActivated;
 use App\Models\Video;
 class UserController extends Controller
