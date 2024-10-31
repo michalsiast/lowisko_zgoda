@@ -40,6 +40,10 @@
             <div class="space20"></div>
             <div id="login-errors" style="color: red;"></div>
             <div class="space20"></div>
+            <div class="form-group">
+                <a href="{{ route('password.request') }}">Nie pamiętam hasła</a>
+            </div>
+            <div class="space20"></div>
             <button type="submit" class="theme-btn1">Zaloguj się <span class="arrow"><i class="fa-solid fa-arrow-right"></i></span></button>
         </form>
     </div>

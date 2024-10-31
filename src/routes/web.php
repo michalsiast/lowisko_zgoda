@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,4 +43,14 @@ Route::post('/user/upload-photos', [UserController::class, 'uploadPhotos'])->nam
 Route::post('/ckeditor/upload', [App\Http\Controllers\CKEditorController::class, 'upload'])->name('ckeditor.upload');
 
 Route::post('/user/upload-videos', [UserController::class, 'uploadVideos'])->name('user.uploadVideos')->middleware('auth');
+
+use App\Http\Controllers\Auth\ForgotPasswordController;
+
+Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+
+use App\Http\Controllers\Auth\ResetPasswordController;
+
+Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
 
