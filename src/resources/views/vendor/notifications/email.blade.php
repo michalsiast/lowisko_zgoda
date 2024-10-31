@@ -4,7 +4,6 @@
     # Witaj!
 
     Otrzymałeś tę wiadomość, ponieważ otrzymaliśmy prośbę o zresetowanie hasła dla Twojego konta.
-
     @component('mail::button', ['url' => $actionUrl])
         Zresetuj Hasło
     @endcomponent
@@ -13,6 +12,6 @@
 
     Jeśli nie żądałeś zresetowania hasła, nie musisz podejmować żadnych działań.
 
-    Pozdrawiamy,
-    Łowisko ZGODA
+    Pozdrawiamy,<br>
+    {{ config('app.name') }}
 @endcomponent
