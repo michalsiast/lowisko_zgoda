@@ -79,12 +79,17 @@ class UserController extends Controller
             'photos.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Każdy plik max 2MB
         ]);
 
+        $userId = Auth::id(); // Pobierz ID aktualnie zalogowanego użytkownika
+
         foreach ($request->file('photos') as $photo) {
             $filename = time() . '_' . $photo->getClientOriginalName();
             $photo->storeAs('public/photos', $filename);
 
-            // Zapisz nazwę pliku w bazie danych
-            Photo::create(['filename' => $filename]);
+            // Zapisz zdjęcie w bazie danych z user_id
+            Photo::create([
+                'filename' => $filename,
+                'user_id' => $userId, // Bezpośrednio przypisz user_id
+            ]);
         }
 
         return redirect()->back()->with('status', 'Zdjęcia zostały przesłane pomyślnie.');
