@@ -20,18 +20,23 @@
         <img src="{{ asset('images/shapes/inner-hero-shape2.png') }}" alt="" class="shape2">
         <img src="{{ asset('images/shapes/inner-hero-shape3.png') }}" alt="" class="shape3">
     </div>
-    <div class="container">
+    <div class="container contact-page-sec d-flex flex-column align-items-center justify-content-center sp">
         <h2>Resetowanie hasła</h2>
-        <form method="POST" action="{{ route('password.email') }}">
+        <form method="POST" class="form-area" style="max-width: 600px; padding-top: 30px"  action="{{ route('password.email') }}">
             @csrf
-            <div class="form-group">
-                <label for="email">Adres e-mail:</label>
-                <input type="email" class="form-control" id="email" name="email" required>
-                @error('email')
-                <div class="text-danger">{{ $message }}</div>
-                @enderror
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="single-input">
+                        <label for="email">Adres e-mail:</label>
+                        <input type="email" id="email" name="email" required>
+                        @error('email')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="space20"></div>
+                <button type="submit" class="theme-btn1">Wyślij link do resetowania hasła <span class="arrow"><i class="fa-solid fa-arrow-right"></i></span></button>
             </div>
-            <button type="submit" class="btn btn-primary">Wyślij link do resetowania hasła</button>
         </form>
     </div>
 @endsection

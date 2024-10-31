@@ -10,6 +10,11 @@ class ResetPasswordController extends Controller
 {
     use ResetsPasswords;
 
+    protected function redirectTo()
+    {
+        return '/';
+    }
+
     public function showResetForm(Request $request, $token = null)
     {
         return view('auth.passwords.reset')->with(

@@ -20,7 +20,6 @@
         <img src="{{ asset('images/shapes/inner-hero-shape3.png') }}" alt="" class="shape3">
     </div>
     <div class="container contact-page-sec d-flex flex-column align-items-center justify-content-center sp">
-
         <form id="loginForm" style="max-width: 600px;" class="form-area" method="POST" action="{{ route('user.login') }}">
             @csrf
             <div class="row">
@@ -39,7 +38,6 @@
             </div>
             <div class="space20"></div>
             <div id="login-errors" style="color: red;"></div>
-            <div class="space20"></div>
             <div class="form-group">
                 <a href="{{ route('password.request') }}">Nie pamiętam hasła</a>
             </div>
