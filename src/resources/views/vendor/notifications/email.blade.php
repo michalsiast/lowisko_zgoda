@@ -13,5 +13,5 @@
     Jeśli nie żądałeś zresetowania hasła, nie musisz podejmować żadnych działań.
 
     Pozdrawiamy,<br>
-    {{ config('app.name') }}
+    Łowisko ZGODA
 @endcomponent

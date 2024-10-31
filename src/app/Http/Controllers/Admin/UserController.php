@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Session;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Photo;
-use App\Notifications\AccountActivated;
+use App\Mail\AccountActivated;
 use App\Models\Video;
 class UserController extends Controller
 {
@@ -28,19 +28,7 @@ class UserController extends Controller
 
         return view('admin.user.edit', compact( 'form'));
     }
-    public function activateUser($id)
-    {
-        $user = User::findOrFail($id);
 
-        // Aktywacja konta
-        $user->is_active = true;
-        $user->save();
-
-        // Wysyłanie powiadomienia
-        $user->notify(new AccountActivated());
-
-        return redirect()->back()->with('status', 'Użytkownik został aktywowany i powiadomienie zostało wysłane.');
-    }
     public function edit(UserRequest $request) {
         $post = $request->post('users');
 
@@ -79,11 +67,17 @@ class UserController extends Controller
         return redirect()->route('admin.users.index')->with('status', 'Użytkownik został odblokowany.');
     }
 
-    public function activate($id) {
+
+    public function activate($id)
+    {
         $user = User::findOrFail($id);
-        $user->is_active = true; // Ustawia użytkownika jako aktywnego
+        $user->is_active = true;
         $user->save();
-        return redirect()->route('admin.users.index')->with('status', 'Użytkownik został aktywowany.');
+
+        // Wysyłka e-maila z powiadomieniem o aktywacji konta
+        Mail::to($user->email)->send(new AccountActivated($user));
+
+        return redirect()->back()->with('status', 'Konto aktywowane. Użytkownik został powiadomiony.');
     }
     public function uploadPhotos(Request $request)
     {
