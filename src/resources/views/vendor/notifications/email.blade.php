@@ -1,11 +1,10 @@
 @component('mail::message')
+    <img src="{{ asset('images/logo.png') }}" alt="Logo" style="width: 150px; height: auto;">
+
     # Witaj!
 
     Otrzymałeś tę wiadomość, ponieważ otrzymaliśmy prośbę o zresetowanie hasła dla Twojego konta.
-
-    @component('mail::button', ['url' => $actionUrl])
-        Zresetuj Hasło
-    @endcomponent
+    [Zresetuj Hasło]({{ $actionUrl }})
 
     Ten link do resetowania hasła wygasa za 60 minut.
 
