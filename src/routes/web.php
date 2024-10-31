@@ -42,3 +42,6 @@ use App\Http\Controllers\Admin\UserController;
 
 Route::post('/user/upload-photos', [UserController::class, 'uploadPhotos'])->name('user.uploadPhotos')->middleware('auth');
 Route::post('/ckeditor/upload', [App\Http\Controllers\CKEditorController::class, 'upload'])->name('ckeditor.upload');
+
+Route::post('/user/upload-videos', [UserController::class, 'uploadVideos'])->name('user.uploadVideos')->middleware('auth');
+

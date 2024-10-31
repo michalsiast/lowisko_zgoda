@@ -61,6 +61,7 @@ return [
     'page.type.about-us.show' => 'O nas',
     'page.type.contact.show' => 'Kontakt',
     'page.type.gallery.show' => 'Galeria',
+    'page.type.video.show' => 'Filmy',
 
 
     'field.plural' => 'Pola',

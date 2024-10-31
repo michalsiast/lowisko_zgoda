@@ -43,7 +43,7 @@
                 <div class="invalid-feedback"></div>
             </div>
             <div class="space30"></div>
-            <button class="theme-btn1">Wyślij <span class="arrow"><i class="fa-solid fa-arrow-right"></i></span></button>
+            <button type="submit" class="theme-btn1">Wyślij <span class="arrow"><i class="fa-solid fa-arrow-right"></i></span></button>
         </div>
     </div>
 

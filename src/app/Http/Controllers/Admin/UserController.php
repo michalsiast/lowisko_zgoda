@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Session;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Photo;
-
+use App\Notifications\AccountActivated;
+use App\Models\Video;
 class UserController extends Controller
 {
     public function index() {
@@ -27,7 +28,19 @@ class UserController extends Controller
 
         return view('admin.user.edit', compact( 'form'));
     }
+    public function activateUser($id)
+    {
+        $user = User::findOrFail($id);
 
+        // Aktywacja konta
+        $user->is_active = true;
+        $user->save();
+
+        // Wysyłanie powiadomienia
+        $user->notify(new AccountActivated());
+
+        return redirect()->back()->with('status', 'Użytkownik został aktywowany i powiadomienie zostało wysłane.');
+    }
     public function edit(UserRequest $request) {
         $post = $request->post('users');
 
@@ -93,6 +106,38 @@ class UserController extends Controller
         }
 
         return redirect()->back()->with('status', 'Zdjęcia zostały przesłane pomyślnie.');
+    }
+    public function uploadVideos(Request $request)
+    {
+        $request->validate([
+            'video_urls' => 'required|string', // Walidacja, że musi być ciąg
+        ]);
+
+        // Rozdziel linki na tablicę
+        $urls = explode(',', $request->video_urls);
+
+        // Sprawdź, czy liczba linków nie przekracza 5
+        if (count($urls) > 5) {
+            return redirect()->back()->withErrors(['video_urls' => 'Możesz dodać maksymalnie 5 filmów.'])->withInput();
+        }
+
+        $userId = Auth::id(); // Pobierz ID aktualnie zalogowanego użytkownika
+
+        foreach ($urls as $url) {
+            // Walidacja każdego linku
+            $url = trim($url); // Usuń białe znaki
+            if (filter_var($url, FILTER_VALIDATE_URL) === FALSE) {
+                return redirect()->back()->withErrors(['video_urls' => 'Nieprawidłowy link do filmu: ' . $url])->withInput();
+            }
+
+            // Stwórz nowe wideo w bazie danych
+            Video::create([
+                'url' => $url,
+                'user_id' => $userId,
+            ]);
+        }
+
+        return redirect()->back()->with('status', 'Filmy zostały dodane pomyślnie.');
     }
 
 }

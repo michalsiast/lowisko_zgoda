@@ -14,7 +14,7 @@
                     <div class="heading1">
                         @if(!empty($fields->subtitle_contact))
                             <span class="span">
-            <img src="{{ asset('images/contact_icon.png') }}" alt="">
+            <img src="{{ asset('images/icons/span2.png') }}" alt="">
             {{$fields->subtitle_contact}}
         </span>
                         @endif

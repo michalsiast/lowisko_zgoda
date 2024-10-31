@@ -49,6 +49,13 @@ abstract class PageType extends Enum
 //            'text1' => ['text', 'Text na stronie głównej']
         ]
     ];
+    const VIDEO_SHOW = [
+        'name' => 'video.show',
+        'module' => false,
+        'fields' => [
+            'text1' => ['text', 'Text na stronie głównej']
+        ]
+    ];
     const ABOUT_US_SHOW = [
         'name' => 'about-us.show',
         'module' => false,

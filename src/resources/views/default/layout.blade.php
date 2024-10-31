@@ -158,7 +158,7 @@
 
 
                         <div class="header2-buttons">
-                            <a class="theme-btn4" style="display: flex" href="{{getConstField('google_map')}}">Jak do nas dojechać <span class="arrow"><i class="fa-solid fa-arrow-right"></i></span></a>
+                            <a class="theme-btn4" style="display: flex; align-items: center;" href="{{getConstField('google_map')}}">Jak do nas dojechać <span class="arrow"><i class="fa-solid fa-arrow-right"></i></span></a>
                         </div>
 
                     </div>

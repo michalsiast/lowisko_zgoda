@@ -19,7 +19,7 @@
   margin-top: 1rem!important;
 }
 .g-recaptcha > div {
-  margin: 0 auto 1rem;
+  margin: 0 0 1rem;
 }
 @media (max-width: 600px) {
   .g-recaptcha {
