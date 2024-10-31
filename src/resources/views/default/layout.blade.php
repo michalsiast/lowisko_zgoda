@@ -146,7 +146,7 @@
                     <div class="header-elements">
                         <div class="site-logo">
                             <a href="/">
-                                <img style="max-width: 200px;" src="{{asset('images/logo.png')}}" alt="">
+                                <img src="{{asset('images/logo.png')}}" alt="">
                             </a>
                         </div>
 
