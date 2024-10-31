@@ -43,8 +43,8 @@
                                             <div class="space30"></div>
                                             <div class="tp-slider-video-box d-flex align-items-center">
                                                 <div class="tp-slider-btn">
-                                                    <a class="theme-btn4" href="contact.html">Strefa klienta <span class="arrow"><i class="fa-solid fa-angle-right"></i></span></a>
-                                                    <a class="theme-btn5" href="contact.html">Cennik <span class="arrow"><i class="fa-solid fa-angle-right"></i></span></a>
+                                                    <a class="theme-btn4" href="{{route('gallery.show')}}">Strefa klienta <span class="arrow"><i class="fa-solid fa-angle-right"></i></span></a>
+                                                    <a class="theme-btn5" href="{{route('offer.index')}}">Cennik <span class="arrow"><i class="fa-solid fa-angle-right"></i></span></a>
                                                 </div>
                                             </div>
                                         </div>

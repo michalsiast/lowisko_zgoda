@@ -49,7 +49,7 @@
                         <div class="space30"></div>
 
                         <div class="" data-aos="fade-left" data-aos-duration="1200">
-                            <a class="theme-btn4" href="/">Cennik <span class="arrow"><i class="fa-solid fa-angle-right"></i></span></a>
+                            <a class="theme-btn4" href="{{route('offer.index')}}">Cennik <span class="arrow"><i class="fa-solid fa-angle-right"></i></span></a>
                         </div>
                     </div>
                 </div>
@@ -84,7 +84,7 @@
 
                         <div class="space30"></div>
                         <div class="" data-aos="fade-left" data-aos-duration="1000">
-                            <a class="theme-btn4" href="service.html">Zobacz galerię
+                            <a class="theme-btn4" href="{{route('gallery.show')}}">Zobacz galerię
                                 <span class="arrow"><i class="fa-solid fa-angle-right"></i></span>
                             </a>
                         </div>
@@ -128,7 +128,7 @@
                         @endif
                         <div class="space30"></div>
                         <div class="" data-aos="fade-left" data-aos-duration="1000">
-                            <a class="theme-btn4" href="about.html">Strefa użytkownika
+                            <a class="theme-btn4" href="{{route('gallery.show')}}">Strefa użytkownika
                                 <span class="arrow"><i class="fa-solid fa-angle-right"></i></span>
                             </a>
                         </div>

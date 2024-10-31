@@ -296,7 +296,7 @@
                             @endauth</li>
                         <li><a href="/regulamin">Regulamin</a></li>
                         <li><a href="https://rezerwacja.lowiskozgoda.pl/">Rezerwacja</a></li>
-                        <li><a href="#">Cennik</a></li>
+                        <li><a href="{{route('offer.index')}}">Cennik</a></li>
                         <li><a href="{{route('contact.show')}}">Kontakt</a></li>
                     </ul>
                 </div>
