@@ -34,9 +34,9 @@
         <div class="container">
             <div class="row">
                 @foreach($page->gallery->items as $item)
-                    <div class="col-lg-4">
+                    <div class="col-lg-4" style="margin-top: 15px">
                         <a href="{{renderImage($item->url, 1920, 1080, 'resize')}}">
-                            <img style="width: 100%" src="{{renderImage($item->url, 600, 600, 'fit')}}" alt="">
+                            <img style="width: 100%;" src="{{renderImage($item->url, 600, 600, 'fit')}}" alt="">
                         </a>
                     </div>
                 @endforeach
@@ -52,7 +52,7 @@
                     @endphp
 
                     @if($user && $user->is_active && !$user->is_blocked)
-                        <div class="col-lg-4">
+                        <div class="col-lg-4" style="margin-top: 15px">
                             <a href="{{ 'storage/photos/' . $photo->filename }}">
                                 <img style="aspect-ratio: 1/1;object-fit: cover" src="{{ 'storage/photos/' . $photo->filename }}" alt="Zdjęcie użytkownika" class="m-2">
                             </a>
