@@ -132,9 +132,9 @@ return [
 
 
     'realization.singular' => 'Realizacja',
-    'realization.plural' => 'Realizacje',
+    'realization.plural' => 'Reklamy',
     'users.plural' => 'Użytkownicy',
-    'realization.title' => 'Tytuł',
+    'realization.title' => 'Link do reklamy',
     'realization.lead' => 'Wprowadzenie',
     'realization.text' => 'Tekst',
 

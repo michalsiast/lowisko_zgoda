@@ -6,6 +6,7 @@
 {{--    <span style="display: block">{!! getFooterCreator() !!}</span>--}}
 
     @include('default.rotator.base', ['id_rotator' => $fields->rotator, 'type' => 'main'])
+@include('default.realization.home')
 <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-offset="0" class="scrollspy-example" tabindex="0">
     <div class="about2 sp" id="about">
         <div class="container">

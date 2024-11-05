@@ -27,9 +27,9 @@
                     <thead>
                         <tr>
                             <td>#</td>
-                            <td></td>
+{{--                            <td></td>--}}
                             <td>{{__('admin.realization.title')}}</td>
-                            <td>Kategoria</td>
+{{--                            <td>Kategoria</td>--}}
                             <td>{{__('admin.active')}}</td>
                             <td></td>
                         </tr>
@@ -40,20 +40,20 @@
                         @foreach($items as $key=>$realization)
                             <tr data-id="{{$realization->id}}">
                                 <td data-position>{{$i++}}</td>
-                                <td style="width: 50px">
-                                    <img src="{{renderSmallCover($realization)}}" alt="">
-                                </td>
+{{--                                <td style="width: 50px">--}}
+{{--                                    <img src="{{renderSmallCover($realization)}}" alt="">--}}
+{{--                                </td>--}}
                                 <td>
                                     {{$realization->title}}
-                                    @if(isset($realization->seo))
-                                        <small style="display: block">
-                                            <a @if($realization->active) target="_blank" @else style="color: grey; opacity: .75" @endif href="@if($realization->active){{url()->to('')}}{{$realization->seo->url}}@else#@endif">
-                                                {{str_replace(['https://', 'http://'], '', url()->to(''))}}{{$realization->seo->url}}
-                                            </a>
-                                        </small>
-                                    @endif
+{{--                                    @if(isset($realization->seo))--}}
+{{--                                        <small style="display: block">--}}
+{{--                                            <a @if($realization->active) target="_blank" @else style="color: grey; opacity: .75" @endif href="@if($realization->active){{url()->to('')}}{{$realization->seo->url}}@else#@endif">--}}
+{{--                                                {{str_replace(['https://', 'http://'], '', url()->to(''))}}{{$realization->seo->url}}--}}
+{{--                                            </a>--}}
+{{--                                        </small>--}}
+{{--                                    @endif--}}
                                 </td>
-                                <td>{!! $realization->category->title ?? '' !!}</td>
+{{--                                <td>{!! $realization->category->title ?? '' !!}</td>--}}
                                 <td>
                                     <input type="checkbox" class="status-switch" data-source_table="realization" data-source_id="{{$realization->id}}" {{$realization->active ? 'checked' : ''}}>
                                 </td>
