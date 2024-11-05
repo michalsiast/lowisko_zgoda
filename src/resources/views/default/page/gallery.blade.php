@@ -53,8 +53,8 @@
 
                     @if($user && $user->is_active && !$user->is_blocked)
                         <div class="col-lg-4">
-                            <a href="{{ asset('storage/photos/' . $photo->filename) }}">
-                                <img style="aspect-ratio: 1/1;object-fit: cover" src="{{ asset('storage/photos/' . $photo->filename) }}" alt="Zdjęcie użytkownika" class="m-2">
+                            <a href="{{ 'storage/photos/' . $photo->filename }}">
+                                <img style="aspect-ratio: 1/1;object-fit: cover" src="{{ 'storage/photos/' . $photo->filename }}" alt="Zdjęcie użytkownika" class="m-2">
                             </a>
                         </div>
                     @endif
