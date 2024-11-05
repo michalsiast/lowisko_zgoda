@@ -142,6 +142,12 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.', 'mi
     Route::post('/users/{id}/block', [App\Http\Controllers\Admin\UserController::class, 'block'])->name('users.block');
     Route::post('/users/{id}/unblock', [App\Http\Controllers\Admin\UserController::class, 'unblock'])->name('users.unblock');
     Route::post('/users/{id}/activate', [App\Http\Controllers\Admin\UserController::class, 'activate'])->name('users.activate');
+
+    Route::get('/user-photos', [App\Http\Controllers\Admin\UserPhotoController::class, 'index'])->name('userPhotos.index');
+    Route::post('/user-photos/{id}/delete', [App\Http\Controllers\Admin\UserPhotoController::class, 'destroy'])->name('userPhotos.destroy');
+
+    Route::get('/user-videos', [App\Http\Controllers\Admin\UserVideoController::class, 'index'])->name('user-videos.index');
+    Route::post('/user-videos/{id}/delete', [App\Http\Controllers\Admin\UserVideoController::class, 'destroy'])->name('user-videos.destroy');
 });
 
 

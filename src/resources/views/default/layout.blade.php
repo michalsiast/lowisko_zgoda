@@ -240,7 +240,14 @@
         <div class="contact-infos">
             <h3>Media społecznościowe</h3>
             <ul class="social-icon">
-                <li><a target="_blank" href="{{getConstField('facebook')}}"><i class="fa-brands fa-facebook-f"></i></a></li>
+                @if(getConstField('facebook'))
+                    <li><a target="_blank" href="{{ getConstField('facebook') }}"><i class="fa-brands fa-facebook-f"></i></a></li>
+                @endif
+
+                @if(getConstField('instagram'))
+                    <li><a target="_blank" href="{{ getConstField('instagram') }}"><i class="fa-brands fa-instagram"></i></a></li>
+                @endif
+
             </ul>
         </div>
 
@@ -263,7 +270,14 @@
                     </div>
                     <div class="social-icons">
                         <ul>
-                            <li><a target="_blank" href="{{getConstField('facebook')}}"><i class="fa-brands fa-facebook-f"></i></a></li>
+                            @if(getConstField('facebook'))
+                                <li><a target="_blank" href="{{ getConstField('facebook') }}"><i class="fa-brands fa-facebook-f"></i></a></li>
+                            @endif
+
+                            @if(getConstField('instagram'))
+                                <li><a target="_blank" href="{{ getConstField('instagram') }}"><i class="fa-brands fa-instagram"></i></a></li>
+                            @endif
+
                         </ul>
                     </div>
                 </div>

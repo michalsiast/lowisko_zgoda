@@ -141,6 +141,8 @@ return [
 
     'realization_category.singular' => 'Kategoria realizacji',
     'realization_category.plural' => 'Kategorie realizacji',
+    'users_photo.plural' => 'Zdjęcia użytkowników',
+    'users_video.plural' => 'Filmy użytkowników',
     'realization_category.title' => 'Tytuł',
     'realization_category.lead' => 'Wprowadzenie',
     'realization_category.text' => 'Tekst',

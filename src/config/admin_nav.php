@@ -92,7 +92,24 @@ return [
             'users' => [
                 'label' => 'admin.users.plural',
                 'icon' => 'file',
-                'route_name' => 'admin.users.index',
+                'route_name' => '',
+                'items' => [
+                    'users' => [
+                        'label' => 'admin.users.plural',
+                        'icon' => 'arrow-up-left',
+                        'route_name' => 'admin.users.index',
+                    ],
+                    'users_photo' => [
+                        'label' => 'admin.users_photo.plural',
+                        'icon' => 'arrow-up-left',
+                        'route_name' => 'admin.userPhotos.index',
+                    ],
+                    'users_video' => [
+                        'label' => 'admin.users_video.plural',
+                        'icon' => 'arrow-up-left',
+                        'route_name' => 'admin.user-videos.index',
+                    ],
+                ]
             ],
         ]
     ],
