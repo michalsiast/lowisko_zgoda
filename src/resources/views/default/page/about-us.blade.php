@@ -6,7 +6,11 @@
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="image1">
-                        <img src="{{ asset('images/about_us_3.jpg') }}" alt="">
+                        @foreach($page->gallery->items as $item)
+                            @if($item->name === 'o_nas')
+                                <img src="{{renderImage($item->url, 1200, 800, 'fit')}}" alt="">
+                            @endif
+                        @endforeach
                     </div>
                 </div>
                 <div class="col-lg-6">

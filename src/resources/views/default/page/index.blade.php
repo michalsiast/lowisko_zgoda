@@ -16,12 +16,20 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="image image-anime reveal">
-                                    <img style="width: 100%; height: 605px;object-fit: cover; border-radius: 12px" src="{{ asset('images/about_us_1.jpg') }}" alt="">
+                                    @foreach($page->gallery->items as $item)
+                                        @if($item->name === 'o_nas_1')
+                                            <img style="width: 100%; height: 605px;object-fit: cover; border-radius: 12px" src="{{renderImage($item->url, 600, 605, 'fit')}}" alt="">
+                                        @endif
+                                    @endforeach
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="image-2 image-anime reveal">
-                                    <img style="width: 100%; height: 530px;object-fit: cover; border-radius: 12px" src="{{ asset('images/about_us_2.jpg') }}" alt="">
+                                    @foreach($page->gallery->items as $item)
+                                        @if($item->name === 'o_nas_2')
+                                                <img style="width: 100%; height: 530px;object-fit: cover; border-radius: 12px" src="{{renderImage($item->url, 600, 530, 'fit')}}" alt="">
+                                        @endif
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -153,7 +161,11 @@
                 <div class="col-lg-6">
                     <div class="tabs-contact">
                         <div class="image image-anime">
-                            <img style="border-radius: 12px" src="{{ asset('images/about_fishery_1.jpg') }}" alt="O łowisku">
+                            @foreach($page->gallery->items as $item)
+                                @if($item->name === 'o_lowisku')
+                                    <img style="border-radius: 12px" src="{{renderImage($item->url, 1200, 800, 'fit')}}" alt="O łowisku">
+                                @endif
+                            @endforeach
                         </div>
                     </div>
                 </div>
