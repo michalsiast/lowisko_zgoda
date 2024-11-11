@@ -60,7 +60,7 @@ class GalleryItemController extends Controller
             return response()->json(['status' => 500, 'message' => $e->getMessage()]);
         }
 
-        return response()->json(['status' => 200]);
+        return redirect()->back()->with('status', 'Zdjęcia zostały przesłane pomyślnie.');
     }
 
     public function update($id) {

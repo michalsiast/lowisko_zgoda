@@ -41,9 +41,40 @@
 
                                 $isActive = request()->fullUrlIs($url);
                             @endphp
-                            <li class="{{ $isActive ? 'active' : '' }}">
-                                <a href="{{ $url }}" target="{{ $target }}">{{ $subItem->label }}</a>
-                            </li>
+
+                            @if($subItem->navItems->count() > 0)
+                                <li class="dropdown-submenu {{ $isActive ? 'active' : '' }}">
+                                    <a href="{{ $url }}" target="{{ $target }}">{{ $subItem->label }} <i class="fa-solid fa-angle-right"></i></a>
+                                    <ul>
+                                        @foreach($subItem->navItems as $subSubItem)
+                                            @php
+                                                $isActive = false;
+                                                $url = null;
+                                                $target = '_self';
+
+                                                if($subSubItem->page) {
+                                                    $url = route($subSubItem->page->type);
+                                                } else {
+                                                    $url = url()->to($subSubItem->url);
+                                                }
+
+                                                if($subSubItem->target) {
+                                                    $target = $subSubItem->target;
+                                                }
+
+                                                $isActive = request()->fullUrlIs($url);
+                                            @endphp
+                                            <li class="{{ $isActive ? 'active' : '' }}">
+                                                <a href="{{ $url }}" target="{{ $target }}">{{ $subSubItem->label }}</a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </li>
+                            @else
+                                <li class="{{ $isActive ? 'active' : '' }}">
+                                    <a href="{{ $url }}" target="{{ $target }}">{{ $subItem->label }}</a>
+                                </li>
+                            @endif
                         @endforeach
                     </ul>
                 </li>

@@ -4548,6 +4548,27 @@ body.body {
   color: var(--vtc-text-white-1);
   transition: all 0.4s;
 }
+.custom-nav{
+    top: 50%;
+    left: 5px;
+    right: 5px;
+}
+.custom-nav .custom-next{
+    position: absolute;
+    right: 0px;
+}
+
+.custom-nav button{
+    border: 2px solid #1C74F0;
+    background: transparent;
+    width: 30px;
+    height: 30px;
+    border-radius: 25px;
+    color: #1C74F0;
+    z-index: 99999;
+    position: relative;
+}
+
 .about-page-service.service-page .service2-box:hover .icon {
   background-color: #fff;
   transition: all 0.4s;

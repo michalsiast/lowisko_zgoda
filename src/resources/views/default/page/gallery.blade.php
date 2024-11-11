@@ -10,19 +10,17 @@
             </div>
             <div class="col-6">
                 @if(Auth::check())
-                    <form method="POST" action="{{ route('user.uploadPhotos') }}" enctype="multipart/form-data">
+                    <form action="{{ route('gallery.items.store', $gallery->id) }}" method="POST" enctype="multipart/form-data" id="galleryForm">
                         @csrf
                         <div class="form-group">
                             <label for="photos">Wybierz zdjęcia (maksymalnie 10):</label>
-                            <input type="file" id="photos" name="photos[]" class="form-control" multiple>
-                            @error('photos')
-                            <div class="text-danger">{{ $message }}</div>
-                            @enderror
-                            @error('photos.*')
+                            <input type="file" id="photos" name="files[]" class="form-control" multiple>
+                            @error('files.*')
                             <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                        <button type="submit" class="btn btn-primary">Prześlij zdjęcia</button>
+
+                        <button type="submit" class="btn btn-primary">Dodaj zdjęcia</button>
                     </form>
                 @else
                     <p>Aby przesłać zdjęcia, prosimy się <a href="{{ route('user.login') }}">zalogować</a></p>
@@ -43,27 +41,6 @@
             </div>
         </div>
     </div>
-    <div class="gallery">
-        <div class="container">
-            <div class="row">
-                @foreach(App\Models\Photo::all() as $photo)
-                    @php
-                        $user = App\Models\User::find($photo->user_id);
-                    @endphp
-
-                    @if($user && $user->is_active && !$user->is_blocked)
-                        <div class="col-lg-4" style="margin-top: 15px">
-                            <a href="{{ 'storage/photos/' . $photo->filename }}">
-                                <img style="aspect-ratio: 1/1;object-fit: cover" src="{{ 'storage/photos/' . $photo->filename }}" alt="Zdjęcie użytkownika" class="m-2">
-                            </a>
-                        </div>
-                    @endif
-                @endforeach
-            </div>
-        </div>
-    </div>
-
-
 
     @push('scripts.body.bottom')
         <script>

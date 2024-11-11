@@ -44,6 +44,11 @@ use App\Http\Controllers\Admin\UserController;
 Route::post('/user/upload-photos', [UserController::class, 'uploadPhotos'])->name('user.uploadPhotos')->middleware('auth');
 Route::post('/ckeditor/upload', [App\Http\Controllers\CKEditorController::class, 'upload'])->name('ckeditor.upload');
 
+use App\Http\Controllers\Admin\GalleryItemController;
+
+Route::post('/gallery/{gallery_id}/items/store', [GalleryItemController::class, 'store'])->name('gallery.items.store');
+
+
 Route::post('/user/upload-videos', [UserController::class, 'uploadVideos'])->name('user.uploadVideos')->middleware('auth');
 
 use App\Http\Controllers\Auth\ForgotPasswordController;
