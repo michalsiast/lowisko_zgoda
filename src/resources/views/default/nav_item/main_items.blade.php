@@ -22,7 +22,7 @@
             @if($item->navItems->count() > 0)
                 <li class="dropdown-menu-parrent {{ $isActive ? 'active' : '' }}">
                     <a href="{{ $url }}" class="main1" target="{{ $target }}">{{ $item->label }} <i class="fa-solid fa-angle-down"></i></a>
-                    <ul class="multi-column">
+                    <ul>
                         @foreach($item->navItems as $subItem)
                             @php
                                 $isActive = false;
