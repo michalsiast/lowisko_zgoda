@@ -31,7 +31,7 @@
     <div class="gallery">
         <div class="container">
             <div class="row">
-                @foreach(App\Models\Video::all() as $video)
+                @foreach(App\Models\Video::orderByDesc('created_at')->get() as $video)
                     @php
                         $user = App\Models\User::find($video->user_id);
                     @endphp
