@@ -22,29 +22,39 @@
             @if($item->navItems->count() > 0)
                 <li class="dropdown-menu-parrent {{ $isActive ? 'active' : '' }}">
                     <a href="{{ $url }}" class="main1" target="{{ $target }}">{{ $item->label }} <i class="fa-solid fa-angle-down"></i></a>
-                    <ul class="dropdown-menu">
+                    <ul>
                         @php
                             $halfway = ceil($item->navItems->count() / 2);
-                            $firstColumn = $item->navItems->take($halfway);
-                            $secondColumn = $item->navItems->slice($halfway);
+                            $index = 0;
                         @endphp
-                        <div class="submenu-columns">
-                            <div class="submenu-column">
-                                @foreach($firstColumn as $subItem)
-                                    <li>
-                                        <a href="{{ $subItem->page ? route($subItem->page->type) : url()->to($subItem->url) }}" target="{{ $subItem->target ?? '_self' }}">
-                                            {{ $subItem->label }}
-                                        </a>
-                                    </li>
-                                @endforeach
+                        <div style="display: flex;">
+                            <div style="flex: 1;">
+                                @foreach($item->navItems as $subItem)
+                                    @if($index == $halfway)
                             </div>
-                            <div class="submenu-column">
-                                @foreach($secondColumn as $subItem)
-                                    <li>
-                                        <a href="{{ $subItem->page ? route($subItem->page->type) : url()->to($subItem->url) }}" target="{{ $subItem->target ?? '_self' }}">
-                                            {{ $subItem->label }}
-                                        </a>
-                                    </li>
+                            <div style="flex: 1;">
+                                @endif
+                                @php
+                                    $isActive = false;
+                                    $url = null;
+                                    $target = '_self';
+
+                                    if($subItem->page) {
+                                        $url = route($subItem->page->type);
+                                    } else {
+                                        $url = url()->to($subItem->url);
+                                    }
+
+                                    if($subItem->target) {
+                                        $target = $subItem->target;
+                                    }
+
+                                    $isActive = request()->fullUrlIs($url);
+                                @endphp
+                                <li class="{{ $isActive ? 'active' : '' }}">
+                                    <a href="{{ $url }}" target="{{ $target }}">{{ $subItem->label }}</a>
+                                </li>
+                                @php $index++; @endphp
                                 @endforeach
                             </div>
                         </div>
