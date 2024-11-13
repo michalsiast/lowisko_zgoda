@@ -20,7 +20,6 @@
             @endphp
 
             @if($item->navItems->count() > 0)
-
                 <li class="dropdown-menu-parent {{ $isActive ? 'active' : '' }}">
                     <a href="{{ $url }}" class="main1" target="{{ $target }}">{{ $item->label }} <i class="fa-solid fa-angle-down"></i></a>
                     <ul>
@@ -44,18 +43,21 @@
                             @endphp
 
                             @if($subItem->navItems->count() > 0)
-                                @php
-                                    $columnClass = '';
-
-                                    if ($item->navItems->count() > 20) {
-                                        $columnClass = 'columns-3';
-                                    } elseif ($item->navItems->count() > 10) {
-                                        $columnClass = 'columns-2';
-                                    }
-                                @endphp
                                 <li class="dropdown-submenu {{ $isActive ? 'active' : '' }}">
                                     <a href="{{ $url }}" target="{{ $target }}">{{ $subItem->label }} <i class="fa-solid fa-angle-right"></i></a>
-                                    <ul class="{{ $columnClass }}">
+
+                                    @php
+                                        $subNavItemCount = $subItem->navItems->count();
+                                        $subColumnClass = '';
+
+                                        if ($subNavItemCount > 20) {
+                                            $subColumnClass = 'columns-3';
+                                        } elseif ($subNavItemCount > 10) {
+                                            $subColumnClass = 'columns-2';
+                                        }
+                                    @endphp
+
+                                    <ul class="{{ $subColumnClass }}">
                                         @foreach($subItem->navItems as $subSubItem)
                                             @php
                                                 $isActive = false;
