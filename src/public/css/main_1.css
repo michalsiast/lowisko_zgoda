@@ -159,6 +159,17 @@ CSS LIST
   animation-timing-function: cubic-bezier(0.59, 0.59, 1, 1);
 }
 
+.columns-2 {
+    column-count: 2;
+    column-gap: 20px;
+}
+
+.columns-3 {
+    column-count: 3;
+    column-gap: 20px;
+}
+
+
 .shape-animaiton2 {
   position: relative;
   animation-name: shape-animaiton2;

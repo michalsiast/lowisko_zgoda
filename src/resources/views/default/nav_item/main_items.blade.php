@@ -1,5 +1,15 @@
 @if($items->count() > 0)
-    <ul>
+    @php
+        $itemCount = $items->count();
+        $columnClass = '';
+
+        if ($itemCount > 20) {
+            $columnClass = 'columns-3';
+        } elseif ($itemCount > 10) {
+            $columnClass = 'columns-2';
+        }
+    @endphp
+    <ul class="{{ $columnClass }}">
         @foreach($items as $item)
             @php
                 $isActive = false;
@@ -20,9 +30,9 @@
             @endphp
 
             @if($item->navItems->count() > 0)
-                <li class="dropdown-menu-parrent {{ $isActive ? 'active' : '' }}">
+                <li class="dropdown-menu-parent {{ $isActive ? 'active' : '' }}">
                     <a href="{{ $url }}" class="main1" target="{{ $target }}">{{ $item->label }} <i class="fa-solid fa-angle-down"></i></a>
-                    <ul>
+                    <ul class="{{ $columnClass }}">
                         @foreach($item->navItems as $subItem)
                             @php
                                 $isActive = false;
@@ -45,7 +55,7 @@
                             @if($subItem->navItems->count() > 0)
                                 <li class="dropdown-submenu {{ $isActive ? 'active' : '' }}">
                                     <a href="{{ $url }}" target="{{ $target }}">{{ $subItem->label }} <i class="fa-solid fa-angle-right"></i></a>
-                                    <ul>
+                                    <ul class="{{ $columnClass }}">
                                         @foreach($subItem->navItems as $subSubItem)
                                             @php
                                                 $isActive = false;
