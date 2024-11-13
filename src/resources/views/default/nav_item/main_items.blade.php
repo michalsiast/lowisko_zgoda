@@ -1,14 +1,4 @@
 @if($items->count() > 0)
-    @php
-        $itemCount = $items->count();
-        $columnClass = '';
-
-        if ($itemCount > 20) {
-            $columnClass = 'columns-3';
-        } elseif ($itemCount > 10) {
-            $columnClass = 'columns-2';
-        }
-    @endphp
     <ul class="{{ $columnClass }}">
         @foreach($items as $item)
             @php
@@ -30,6 +20,15 @@
             @endphp
 
             @if($item->navItems->count() > 0)
+                @php
+                    $columnClass = '';
+
+                    if ($item->navItems->count() > 20) {
+                        $columnClass = 'columns-3';
+                    } elseif ($item->navItems->count() > 10) {
+                        $columnClass = 'columns-2';
+                    }
+                @endphp
                 <li class="dropdown-menu-parent {{ $isActive ? 'active' : '' }}">
                     <a href="{{ $url }}" class="main1" target="{{ $target }}">{{ $item->label }} <i class="fa-solid fa-angle-down"></i></a>
                     <ul class="{{ $columnClass }}">
