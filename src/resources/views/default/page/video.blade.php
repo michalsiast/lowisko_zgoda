@@ -34,11 +34,15 @@
                 @foreach(App\Models\Video::orderByDesc('created_at')->get() as $video)
                     @php
                         $user = App\Models\User::find($video->user_id);
+
+                        // Ekstrakcja VIDEO_ID z linku YouTube
+                        preg_match('/(youtu\.be\/|youtube\.com\/(watch\?v=|embed\/|v\/|.+\?v=))([^&?\/]+)/', $video->url, $matches);
+                        $videoId = $matches[3] ?? null;
                     @endphp
 
-                    @if($user && $user->is_active && !$user->is_blocked)
+                    @if($user && $user->is_active && !$user->is_blocked && $videoId)
                         <div class="col-lg-4">
-                            <iframe width="100%" height="250" src="https://www.youtube.com/embed/{{ basename($video->url) }}" frameborder="0" allowfullscreen></iframe>
+                            <iframe width="100%" height="250" src="https://www.youtube.com/embed/{{ $videoId }}" frameborder="0" allowfullscreen></iframe>
                         </div>
                     @endif
                 @endforeach

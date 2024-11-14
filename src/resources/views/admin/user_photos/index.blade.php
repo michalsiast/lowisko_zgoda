@@ -2,33 +2,29 @@
 
 @section('content')
     <div class="container">
-        <h1>Zdjęcia Użytkowników</h1>
+        <h1>Zdjęcia dla galerii</h1>
 
-        @if(session('success'))
-            <div class="alert alert-success">{{ session('success') }}</div>
-        @endif
-
-        <table class="table">
+        <table class="table table-bordered">
             <thead>
             <tr>
-                <th>Email</th>
                 <th>Zdjęcie</th>
-                <th>Akcja</th>
+                <th>Akcje</th>
             </tr>
             </thead>
             <tbody>
             @foreach($photos as $photo)
-                @php
-                    $user = $photo->user; // zakładając, że masz relację 'user' w modelu Photo
-                @endphp
                 <tr>
-                    <td>{{ $user->email }}</td>
-                    <td><img src="{{ asset('storage/photos/' . $photo->filename) }}" alt="Zdjęcie" width="100"></td>
+                    <!-- Kolumna z miniaturką -->
                     <td>
-                        <form action="{{ route('admin.userPhotos.destroy', $photo->id) }}" method="POST" onsubmit="return confirm('Czy na pewno chcesz usunąć to zdjęcie?');">
+                        <img src="{{ Storage::url($photo->url) }}" alt="Miniaturka" style="width: 200px; height: auto;">
+                    </td>
+
+                    <!-- Kolumna z przyciskiem Usuń -->
+                    <td>
+                        <form action="{{ route('admin.galleryItems.deleteUsers', $photo->id) }}" method="POST" onsubmit="return confirm('Czy na pewno chcesz usunąć to zdjęcie?');">
                             @csrf
-                            @method('POST')
-                            <button type="submit" class="btn btn-danger">Usuń</button>
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm">Usuń</button>
                         </form>
                     </td>
                 </tr>

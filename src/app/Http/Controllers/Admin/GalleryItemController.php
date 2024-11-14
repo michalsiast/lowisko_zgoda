@@ -14,6 +14,7 @@ use App\Http\Controllers\Controller;
 use App\Models\GalleryItem;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\Request;
+use App\Models\Page;
 
 class GalleryItemController extends Controller
 {
@@ -130,5 +131,56 @@ class GalleryItemController extends Controller
             return response()->json(['status' => 500, 'message' => $e->getMessage()]);
         }
         return response()->json(['status' => 200, 'message' => 'Gallery item has been removed.']);
+    }
+
+    public function deleteUsers($gallery_item_id) {
+        if (!$gallery_item_id) {
+            return response()->json(['status' => 404, 'message' => 'Gallery item with id '.$gallery_item_id.' does not exist!']);
+        }
+
+        // Znajdź element galerii
+        $item = GalleryItem::with([])->findOrFail($gallery_item_id);
+
+        // Usuń główny plik zdjęcia
+        if (Storage::exists($item->url)) {
+            Storage::delete($item->url);
+
+            // Usuń powiązane pliki w katalogu resized
+            $filesArray = [];
+            foreach (\File::allFiles('resized') as $file) {
+                if (str_contains(basename($file), '_public_gallery_item_' . $item->gallery_id . '_' . str_replace('public/gallery_item/'.$item->gallery_id.'/', '', $item->url))) {
+                    $filesArray[] = 'resized/' . basename($file);
+                }
+            }
+            \File::delete($filesArray);
+        }
+
+        // Usuń rekord z bazy danych
+        try {
+            $item->delete();
+        } catch (\Exception $e) {
+            return response()->json(['status' => 500, 'message' => $e->getMessage()]);
+        }
+
+        // Zwróć odpowiedź JSON o powodzeniu
+        return redirect()->back()->with('status', 'Gallery item has been removed.');
+    }
+    public function showGalleryItems() {
+        // Pobierz rekord z tabeli 'pages', gdzie 'type' jest 'gallery_show'
+        $page = Page::where('type', 'gallery.show')->first();
+
+        // Sprawdź, czy rekord istnieje
+        if (!$page) {
+            return redirect()->back()->with('error', 'Brak strony o typie gallery_show.');
+        }
+
+        // Pobierz gallery_id dla strony o typie 'gallery_show'
+        $gallery_id = $page->gallery_id;
+
+        // Pobierz zdjęcia dla określonego gallery_id
+        $photos = \DB::table('gallery_item')->where('gallery_id', $gallery_id)->get();
+
+        // Przekaż zdjęcia do widoku
+        return view('admin.user_photos.index', compact('photos'));
     }
 }

@@ -45,8 +45,11 @@ Route::post('/user/upload-photos', [UserController::class, 'uploadPhotos'])->nam
 Route::post('/ckeditor/upload', [App\Http\Controllers\CKEditorController::class, 'upload'])->name('ckeditor.upload');
 
 use App\Http\Controllers\Admin\GalleryItemController;
+use App\Http\Controllers\Admin\UserVideoController;
 
 Route::post('/gallery/{gallery_id}/items/store', [GalleryItemController::class, 'store'])->name('gallery.items.store');
+
+Route::delete('/admin/user-videos/{id}', [UserVideoController::class, 'destroy'])->name('admin.user-videos.destroy');
 
 
 Route::post('/user/upload-videos', [UserController::class, 'uploadVideos'])->name('user.uploadVideos')->middleware('auth');
@@ -60,3 +63,7 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 
 Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
 Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
+
+Route::delete('/admin/gallery-items/{id}', [GalleryItemController::class, 'deleteUsers'])->name('admin.galleryItems.deleteUsers');
+Route::get('/admin/user-photos', [GalleryItemController::class, 'showGalleryItems'])->name('admin.userPhotos.index');
+
