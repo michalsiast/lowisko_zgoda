@@ -36,20 +36,41 @@ class ArticleController extends Controller
     }
     public function renderContent($content)
     {
-        return preg_replace_callback('/<oembed url="(.*?)"><\/oembed>/', function ($matches) {
+        $content = preg_replace_callback('/<oembed url="(.*?)"><\/oembed>/', function ($matches) {
+            $url = $matches[1];
+
+            return $this->convertYouTubeToEmbed($url);
+        }, $content);
+
+        $content = preg_replace_callback('/<a href="(.*?)">(.*?)<\/a>/', function ($matches) {
             $url = $matches[1];
 
             if (strpos($url, 'youtube.com') !== false || strpos($url, 'youtu.be') !== false) {
-                if (strpos($url, 'youtube.com') !== false) {
-                    $embedUrl = str_replace('watch?v=', 'embed/', strtok($url, '&'));
-                } elseif (strpos($url, 'youtu.be') !== false) {
-                    $videoId = substr(parse_url($url, PHP_URL_PATH), 1);
-                    $embedUrl = 'https://www.youtube.com/embed/' . $videoId;
-                }
-                return '<iframe width="100%" height="400" src="' . $embedUrl . '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+                return $this->convertYouTubeToEmbed($url);
             }
 
             return $matches[0];
         }, $content);
+
+        return $content;
     }
+
+    private function convertYouTubeToEmbed($url)
+    {
+        if (strpos($url, 'watch?v=') !== false) {
+            $embedUrl = str_replace('watch?v=', 'embed/', strtok($url, '&'));
+        } elseif (strpos($url, 'youtube.com/shorts/') !== false) {
+            $videoId = substr(parse_url($url, PHP_URL_PATH), strlen('/shorts/'));
+            $embedUrl = 'https://www.youtube.com/embed/' . $videoId;
+        } elseif (strpos($url, 'youtu.be') !== false) {
+            $videoId = substr(parse_url($url, PHP_URL_PATH), 1);
+            $embedUrl = 'https://www.youtube.com/embed/' . $videoId;
+        } else {
+            return $url;
+        }
+
+        return '<iframe width="100%" height="430" src="' . $embedUrl . '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen> </iframe>';
+    }
+
+
 }
