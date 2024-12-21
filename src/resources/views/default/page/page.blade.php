@@ -15,19 +15,21 @@
             </div>
         </div>
     @endif
-    <div class="gallery sp">
-        <div class="container">
-            <div class="row">
-                @foreach($page->gallery->items as $item)
-                    <div class="col-lg-4" style="margin-top: 15px">
-                        <a href="{{renderImage($item->url, 1920, 1080, 'resize')}}">
-                            <img style="width: 100%;" src="{{renderImage($item->url, 600, 600, 'fit')}}" alt="">
-                        </a>
-                    </div>
-                @endforeach
+    @if($page->gallery->items->isNotEmpty())
+        <div class="gallery sp">
+            <div class="container">
+                <div class="row">
+                    @foreach($page->gallery->items as $item)
+                        <div class="col-lg-4" style="margin-top: 15px">
+                            <a href="{{renderImage($item->url, 1920, 1080, 'resize')}}">
+                                <img style="width: 100%;" src="{{renderImage($item->url, 600, 600, 'fit')}}" alt="">
+                            </a>
+                        </div>
+                    @endforeach
+                </div>
             </div>
         </div>
-    </div>
+    @endif
     @push('scripts.body.bottom')
         <script>
             var lightbox = $('.gallery a').simpleLightbox({});
