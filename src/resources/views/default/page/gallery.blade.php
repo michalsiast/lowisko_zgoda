@@ -31,7 +31,7 @@
     <div class="gallery">
         <div class="container">
             <div class="row">
-                @foreach($page->gallery->items as $item)
+                @foreach($page->gallery->items->reverse() as $item)
                     <div class="col-lg-4" style="margin-top: 15px">
                         <a href="{{renderImage($item->url, 1920, 1080, 'resize')}}">
                             <img style="width: 100%;" src="{{renderImage($item->url, 600, 600, 'fit')}}" alt="">
