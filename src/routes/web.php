@@ -21,7 +21,12 @@ Route::prefix('user')->name('user.')->group(function () {
     // Rejestracja użytkowników
     Route::get('register', [App\Http\Controllers\UserAuthController::class, 'showRegistrationForm'])->name('register');
     Route::post('register', [App\Http\Controllers\UserAuthController::class, 'register']);
+    Route::post('verify', [App\Http\Controllers\UserAuthController::class, 'verifyCode'])->name('verify');
+    Route::get('verify', function () {
+        return view('auth.verify_code');
+    })->name('verify.form');
 
+    Route::post('resend-code', [App\Http\Controllers\UserAuthController::class, 'resendCode'])->name('resend.code');
     // Wylogowanie użytkowników
     Route::post('logout', [App\Http\Controllers\UserAuthController::class, 'logout'])->name('logout');
 });

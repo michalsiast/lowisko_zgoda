@@ -72,7 +72,13 @@
                         method: 'POST',
                         data: $(this).serialize(),
                         success: function(response) {
-                            $('#successMessage').text('Rejestracja zakończona sukcesem. Oczekuj na aktywację przez administratora.');
+                            $('#successMessage').text('Kod weryfikacyjny został wysłany na adres e-mail. Przekierowanie...');
+
+                            setTimeout(function() {
+                                window.location.href = "{{ route('user.verify.form') }}";
+                            }, 2000);
+                            localStorage.setItem('registeredEmail', $('#email').val());
+                            window.location.href = "{{ route('user.verify.form') }}";
                             $('#registrationForm')[0].reset();
                         },
                         error: function(xhr) {

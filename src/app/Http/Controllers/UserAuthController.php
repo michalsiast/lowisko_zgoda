@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TemporaryUser;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class UserAuthController extends Controller
 {
@@ -61,17 +64,20 @@ class UserAuthController extends Controller
             return response()->json(['errors' => $validator->errors()], 422);
         }
 
+        $verificationCode = strtoupper(Str::random(4)) . '-' . strtoupper(Str::random(4));
+
         // Tworzenie nowego użytkownika z domyślnym statusem nieaktywnym
-        User::create([
+        TemporaryUser::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'is_active' => false,
-            'is_blocked' => false,
+            'verification_code' => $verificationCode,
+            'created_at' => now(),
         ]);
 
-        // Zwraca odpowiedź JSON, która wskazuje na sukces rejestracji
-        return response()->json(['success' => 'Konto zostało utworzone. Proszę poczekać na aktywację przez administratora.']);
+        Mail::to($request->email)->send(new \App\Mail\VerificationCodeMail($verificationCode));
+
+        return response()->json(['success' => 'Kod weryfikacyjny został wysłany na adres e-mail.']);
     }
 
 
@@ -79,6 +85,52 @@ class UserAuthController extends Controller
     public function logout()
     {
         Auth::guard('web')->logout();
-        return redirect('/'); // Przekierowanie na stronę główną po wylogowaniu
+        return redirect('/');
+    }
+
+    public function resendCode(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email'
+        ]);
+
+        $tempUser = \App\Models\TemporaryUser::where('email', $request->email)->first();
+
+        if (!$tempUser) {
+            return response()->json(['error' => 'Nie znaleziono użytkownika.'], 404);
+        }
+
+        \Mail::to($tempUser->email)->send(new \App\Mail\VerificationCodeMail($tempUser->verification_code));
+
+        return response()->json(['success' => 'Kod został wysłany ponownie na e-mail.']);
+    }
+
+
+    public function verifyCode(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'code' => 'required|string'
+        ]);
+
+        $tempUser = TemporaryUser::where('email', $request->email)
+            ->where('verification_code', $request->code)
+            ->first();
+
+        if (!$tempUser) {
+            return response()->json(['error' => 'Nieprawidłowy kod.'], 422);
+        }
+
+        User::create([
+            'name' => $tempUser->name,
+            'email' => $tempUser->email,
+            'password' => $tempUser->password,
+            'is_active' => false,
+            'is_blocked' => false,
+        ]);
+
+        $tempUser->delete();
+
+        return response()->json(['success' => 'Konto zostało utworzone. Proszę poczekać na aktywację przez administratora.']);
     }
 }
