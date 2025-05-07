@@ -3,7 +3,7 @@
 @section('content')
     <div class="container contact-page-sec d-flex flex-column align-items-center justify-content-center sp">
         <h2 class="mb-4">Weryfikacja konta</h2>
-        <form id="verifyForm" style="max-width: 500px;" class="form-area" method="POST" action="{{ route('user.verify') }}">
+        <form id="verifyForm" style="max-width: 500px; width:100%;" class="form-area" method="POST" action="{{ route('user.verify') }}">
             @csrf
             <input type="hidden" id="email" name="email">
             <div class="single-input">
